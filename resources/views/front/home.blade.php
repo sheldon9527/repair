@@ -28,7 +28,7 @@
                 echo "<script>alert('操作成功');location.href='".$_SERVER["HTTP_REFERER"]."';</script>";
                     ?>
             @endif
-            <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;">
+            <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:10px;">
                 <td colspan="4">
                     <table width="98%" cellpadding="0" cellspacing="5" align="center">
                         <tr>
@@ -44,7 +44,7 @@
                     </table>
                 </td>
             </tr>
-            <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;">
+            <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:10px;">
                 <td colspan="4">
                     <table width="98%" cellpadding="0" cellspacing="5" align="center">
                         <tr>
@@ -60,7 +60,7 @@
                     </table>
                 </td>
             </tr>
-            <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;">
+            <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:10px;">
                 <td colspan="4">
                     <table width="98%" cellpadding="0" cellspacing="5" align="center">
                         <tr>
@@ -98,7 +98,7 @@
                 </td>
             </tr>
 
-            <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;">
+            <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:10px;">
                 <td colspan="4">
                     <table width="98%" cellpadding="0" cellspacing="5" align="center">
                         <tr>
@@ -117,7 +117,7 @@
 
 
 
-        <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;">
+        <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:10px;">
             <td colspan="4">
                 <table width="98%" cellpadding="0" cellspacing="5" align="center">
                     <tr>
@@ -138,7 +138,7 @@
                                         <div role="tabpanel" class="tab-pane @if($key == 0) active @endif in" id="categoty-{{$category->id}}">
                                             @foreach($category->children as $child)
                                                 <div class="col-md-10">
-                                                    <label class="checkbox-inline ng-scope">
+                                                    <label style='margin-top:10px' class="checkbox-inline ng-scope">
                                                         <input type="checkbox"
                                                             value="{{$child->id}}"
                                                             name="category_ids[]">
@@ -156,7 +156,7 @@
             </td>
         </tr>
 
-        <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'">
+        <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:10px;">
             <td colspan="4">
                 <table width="98%" cellpadding="0" cellspacing="5" align="center">
                     <tr>
@@ -172,7 +172,7 @@
                 </table>
             </td>
         </tr>
-        <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'">
+        <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:10px;">
             <td colspan="4">
                 <table width="98%" cellpadding="0" cellspacing="5" align="center">
                     <tr>
