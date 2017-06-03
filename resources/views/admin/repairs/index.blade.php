@@ -99,22 +99,21 @@
                                                     <h4 class="box-title">创建时间:{{$repair->created_at}}</h4>
                                                 </div>
                                             </div>
-                                            <div class="col-xs-6 col-md-2">
+                                            <div class="col-xs-6 col-md-3">
                                                 <div style="margin-top:15px;">
                                                     <h4 class="box-title">报修类别:</h4>
                                                     @if($repair->categories)
-                                                        @foreach($repair->categories as $category)
-                                                            <div>
-                                                                {{$category->parent->name}}
-                                                                    <button class="btn btn-default btn-xs">{{$category->name}}</button>
-                                                            </div>
+                                                        @foreach($repair->categories as $keyCa => $category)
+                                                            @if($keyCa%2 == 0 && $keyCa !=0) </br> @endif
+                                                            {{$category->parent->name}}
+                                                            <button class="btn btn-default btn-xs">{{$category->name}}</button>
                                                         @endforeach
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="col-xs-6 col-md-5">
+                                            <div class="col-xs-6 col-md-4">
                                                 <div style="margin-top:15px;">
-                                                    <h4 class="box-title">详情:</h4>{{$repair->description}}
+                                                    <h4 class="box-title">报修详情:</h4>{{$repair->description}}
                                                 </div>
                                             </div>
                                             <div class="col-xs-6 col-md-2">
