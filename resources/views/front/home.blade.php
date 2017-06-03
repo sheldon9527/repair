@@ -23,11 +23,31 @@
 			<tr>
 				<td id="info2" colspan="6"></td>
 			</tr>
+
 			@if (session('status'))
 				<?php
                 echo "<script>alert('操作成功');location.href='".$_SERVER["HTTP_REFERER"]."';</script>";
                     ?>
             @endif
+            <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:10px;">
+                <td colspan="4">
+                    <table width="98%" cellpadding="0" cellspacing="5" align="center">
+                        <tr>
+                            <td>
+                                @if (count($errors) > 0)
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
             <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:10px;">
                 <td colspan="4">
                     <table width="98%" cellpadding="0" cellspacing="5" align="center">
