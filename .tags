@@ -1,0 +1,11 @@
+api	/Users/Sheldon/Documents/Code/wenjuan/app/Http/routes.php	/^$api = app('api.router');$/;"	variable	line:16
+result	/Users/Sheldon/Documents/Code/wenjuan/app/Http/routes.php	/^            $result = env($key) ?: 'env error';$/;"	variable	line:41
+HomeController	/Users/Sheldon/Documents/Code/wenjuan/app/Http/Controllers/Front/HomeController.php	/^class HomeController extends BaseController$/;"	class	line:7
+home	/Users/Sheldon/Documents/Code/wenjuan/app/Http/Controllers/Front/HomeController.php	/^    public function home()$/;"	function	line:9
+categories	/Users/Sheldon/Documents/Code/wenjuan/app/Http/Controllers/Front/HomeController.php	/^        $categories = Category::where('parent_id', 0)->with('children')->get();$/;"	variable	line:11
+store	/Users/Sheldon/Documents/Code/wenjuan/app/Http/Controllers/Front/HomeController.php	/^    public function store()$/;"	function	line:15
+loader	/Users/Sheldon/Documents/Code/wenjuan/artisan	/^| Composer provides a convenient, automatically generated class loader$/;"	class	line:9
+app	/Users/Sheldon/Documents/Code/wenjuan/artisan	/^$app = require_once __DIR__.'\/bootstrap\/app.php';$/;"	variable	line:18
+kernel	/Users/Sheldon/Documents/Code/wenjuan/artisan	/^$kernel = $app->make('Illuminate\\Contracts\\Console\\Kernel');$/;"	variable	line:31
+status	/Users/Sheldon/Documents/Code/wenjuan/artisan	/^$status = $kernel->handle($/;"	variable	line:33
+input	/Users/Sheldon/Documents/Code/wenjuan/artisan	/^    $input = new Symfony\\Component\\Console\\Input\\ArgvInput,$/;"	variable	line:34

@@ -20,6 +20,8 @@ public/sql/*
 .env
 *.swp
 .swo
+.tags
+.tags1
 public/images/*-*/
 public/css/imgs/*-*/
 public/doc/*

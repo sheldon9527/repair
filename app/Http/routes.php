@@ -19,6 +19,10 @@ Route::get('inquiry', [
     'as' => 'inquiry.get',
     'uses' => 'Front\HomeController@home',
 ]);
+Route::post('inquiry', [
+    'as' => 'inquiry.post',
+    'uses' => 'Front\HomeController@store',
+]);
 
 $api->version('v1', ['namespace' => 'App\Http\Controllers\Api\V1'], function ($api) {
 
