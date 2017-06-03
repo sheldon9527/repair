@@ -51,7 +51,7 @@
                                           </div>&nbsp;&nbsp;
                                           <div class="form-group">
                                                <label>宿舍号</label>
-                                              <input type="number" style='width:100px' class="form-control" name="home_number" placeholder="宿舍号" value="{{$searchColumns['home_number']}}">
+                                              <input type="number" style='width:100px' class="form-control" name="home_number" placeholder="例如:336" value="{{$searchColumns['home_number']}}">
                                           </div>&nbsp;&nbsp;
                                           <div class="form-group">
                                               <label>类型</label>
@@ -114,7 +114,7 @@
                                             </div>
                                             <div class="col-xs-6 col-md-5">
                                                 <div style="margin-top:15px;">
-                                                    <h4 class="box-title">详情:{{$repair->description}}</h4>
+                                                    <h4 class="box-title">详情:</h4>{{$repair->description}}
                                                 </div>
                                             </div>
                                             <div class="col-xs-6 col-md-2">
