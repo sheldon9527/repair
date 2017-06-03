@@ -24,6 +24,9 @@ class RepairAddressController extends BaseController
         if ($status = $this->request->get('status')) {
             $repairs->where('status', $status);
         }
+        if ($name = $this->request->get('name')) {
+            $repairs->where('name', 'like', '%' . $name . '%');
+        }
         if ($startTime = $this->request->get('start_time')) {
             $repairs->where('created_at', '>=', $startTime);
         }
@@ -37,6 +40,7 @@ class RepairAddressController extends BaseController
             'status'        => $status,
             'startTime'     => $startTime,
             'endTimte'      => $endTimte,
+            'name'          => $name,
         ];
         return view('admin.repairs.index', compact('repairs', 'searchColumns'));
     }

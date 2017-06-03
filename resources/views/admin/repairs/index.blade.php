@@ -21,22 +21,22 @@
                         <thead>
                             <tr role="row">
                                 <th class="sorting" tabindex="0"  rowspan="1" colspan="1">
-                                    &nbsp;&nbsp;<input name="" type="checkbox" value="" style="margin-top:20px;">
+                                    <input name="" type="checkbox" value="" style="margin-top:20px;">
                                 </th>
                                 <th class="sorting" tabindex="0"  rowspan="1" colspan="1">
                                     <form class="form-inline" action="{{route('admin.repairs.index')}}" method="get">
                                       <div class="box-body">
                                           <div class="form-group">
                                              <a class="btn btn-info" id='link'>删除选中</a>
-                                          </div>&nbsp;&nbsp;
+                                          </div>
                                           <div class="form-group">
                                              <a class="btn btn-info" id='approval'>修理选中</a>
-                                          </div>&nbsp;&nbsp;
+                                          </div>
                                           <div class="form-group">
                                              <a class="btn btn-info" id='finish'>完成选中</a>
-                                          </div>&nbsp;&nbsp;
+                                         </div>
                                           <div class="form-group">
-                                            <label>楼号</label>
+                                            <label><h4>楼号</h4></label>
                                               <select name="build_number" id="status" class="form-control">
                                                   <option value="">全部</option>
                                                   <option value=1 @if($searchColumns['build_number'] == 1) selected = "selected" @endif>一号楼</option>
@@ -48,29 +48,39 @@
                                                     <option value=7 @if($searchColumns['build_number'] == 7) selected = "selected" @endif>七号楼</option>
                                                     <option value=8 @if($searchColumns['build_number'] == 8) selected = "selected" @endif>八号楼</option>
                                               </select>
-                                          </div>&nbsp;&nbsp;
+                                          </div>
                                           <div class="form-group">
-                                               <label>宿舍号</label>
-                                              <input type="number" style='width:100px' class="form-control" name="home_number" placeholder="例如:336" value="{{$searchColumns['home_number']}}">
-                                          </div>&nbsp;&nbsp;
-                                          <div class="form-group">
-                                              <label>类型</label>
+                                              <label><h4>维修类型</h4></label>
                                               <select name="status" id="status" class="form-control">
                                                   <option value="">全部</option>
                                                   <option value="PEND" @if($searchColumns['status'] =='PEND') selected = "selected" @endif>未维修</option>
                                                   <option value="PENDING" @if($searchColumns['status'] =='PENDING') selected = "selected" @endif>维修中</option>
                                                    <option value="FINISH" @if($searchColumns['status'] =='FINISH') selected = "selected" @endif>维修完</option>
                                               </select>
-                                          </div>&nbsp;&nbsp;
-                                          <div class="form-group">
-                                              <label>时间</label>
-                                                  <input style='width:100px' type="text" name="start_time" value="{{$searchColumns['startTime']}}" class="form_datatime form-control form-control" placeholder="开始时间">
                                           </div>
                                           <div class="form-group">
-                                              <label>to</label>
-                                                  <input style='width:100px' type="text" name="end_time" value="{{$searchColumns['endTimte']}}" class="form_datatime form-control form-control" placeholder="结束时间">
-                                          </div>&nbsp;&nbsp;
-                                          <button class="btn btn-info"><i class="fa fa-search"></i></button>
+                                               <label><h4>宿舍号</h4></label>
+                                              <input type="number"  class="form-control" name="home_number" placeholder="例如:336" value="{{$searchColumns['home_number']}}">
+                                          </div>
+
+                                          <div>
+                                              <div class="form-group">
+                                                 <label><h4>用户姓名</h4></label>
+                                                <input type="text"  class="form-control" name="name" placeholder="例如:Sheldon Yi" value="{{$searchColumns['name']}}">
+                                                </div>
+
+                                              <div class="form-group">
+                                                  <label>开始时间</label>
+                                                      <input  type="text" name="start_time" value="{{$searchColumns['startTime']}}" class="form_datatime form-control form-control" placeholder="开始时间">
+                                              </div>
+                                              <div class="form-group">
+                                                  <label>结束时间</label>
+                                                      <input  type="text" name="end_time" value="{{$searchColumns['endTimte']}}" class="form_datatime form-control form-control" placeholder="结束时间">
+                                              </div>
+                                              <div class="form-group" >
+                                                 <button class="btn btn-info"><i class="fa fa-search"></i></button>
+                                              </div>
+                                      </div>
                                       </div>
                                   </form>
                                 </th>
