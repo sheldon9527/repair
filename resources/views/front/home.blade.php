@@ -18,7 +18,7 @@
 		<table width="960px" align="center" bgcolor="#FAFAFA">
 		<form id="form1" name="form1" method="post" action="" class="form-inline">
 			<tr>
-				<td id="info" colspan="6">为了同学们能够及时的上报自己宿舍需要维修的东西且能够得到更快的反馈，往同学们抽出一点点时间为填一下.</td>
+				<td id="info" colspan="6">为了同学们能够及时的上报需要维修的东西且能够得到更快的反馈，往同学们发现问题就及时的填写.</td>
 			</tr>
 			<tr>
 				<td id="info2" colspan="6"></td>
@@ -160,7 +160,7 @@
             <td colspan="4">
                 <table width="98%" cellpadding="0" cellspacing="5" align="center">
                     <tr>
-                      <td><b><span style="color:red;margin-right:10px;">*</span>报修具体详情</b></td>
+                      <td><b><span style="color:red;margin-right:10px;">*</span>报修详情</b></td>
                     </tr>
                     <tr>
                         <td>
