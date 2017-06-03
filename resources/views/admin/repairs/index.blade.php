@@ -105,8 +105,14 @@
                                                     @if($repair->categories)
                                                         @foreach($repair->categories as $keyCa => $category)
                                                             @if($keyCa%2 == 0 && $keyCa !=0) </br> @endif
+                                                            <div class="col-xs-6 col-md-6">
                                                             {{$category->parent->name}}
                                                             <button class="btn btn-default btn-xs">{{$category->name}}</button>
+                                                            </div>
+                                                            <div class="col-xs-6 col-md-6">
+                                                            {{$category->parent->name}}
+                                                            <button class="btn btn-default btn-xs">{{$category->name}}</button>
+                                                            </div>
                                                         @endforeach
                                                     @endif
                                                 </div>
