@@ -17,15 +17,15 @@
                     </a>
                 </li>
 				<li class="treeview {{
-						\Route::is('admin.teach.addresses.*') ? 'active' : null
+						\Route::is('admin.repairs.*') ? 'active' : null
 					}}">
 					<a href="#">
 						<i class="fa fa-users"></i> <span>维修管理</span>
 						<i class="fa fa-angle-left pull-right"></i>
 					</a>
 					<ul class="treeview-menu menu-open">
-						<li class="">
-							<a href=""><i class="fa fa-circle-o"></i> 维修列表</a>
+						<li class="{{\Route::is('admin.repairs.*') ? 'active' : ''}}">
+							<a href="{{route('admin.repairs.index')}}"><i class="fa fa-circle-o"></i> 维修列表</a>
 						</li>
 					</ul>
 				</li>

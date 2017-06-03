@@ -37,7 +37,23 @@
                         <tr>
                             <td>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="name" style='width:100%;height:34px;font-size:14px' placeholder="Sheldon Yi" required>
+                                    <input type="text" class="form-control" name="name" style='width:100%;height:34px;font-size:14px' placeholder="例如:Sheldon Yi" required>
+                                  </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;">
+                <td colspan="4">
+                    <table width="98%" cellpadding="0" cellspacing="5" align="center">
+                        <tr>
+                          <td><b><span style="margin-right:10px"></span>联系方式</b></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="phone" style='width:100%;height:34px;font-size:14px' placeholder="例如:184****2878" >
                                   </div>
                             </td>
                         </tr>
@@ -52,9 +68,30 @@
                         </tr>
                         <tr>
                             <td>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="build_number" style='width:100%;height:34px;font-size:14px' placeholder="5" required>
-                                  </div>
+                                <div class="radio">
+                                   <label><input type="radio" name="build_number" value=1>一号楼</label>
+                                </div>
+                                <div class="radio">
+                                   <label><input type="radio" name="build_number" value=2>二号楼</label>
+                                </div>
+                                <div class="radio">
+                                   <label><input type="radio" name="build_number" value=3>三号楼</label>
+                                </div>
+                                <div class="radio">
+                                   <label><input type="radio" name="build_number" value=4>四号楼</label>
+                                </div>
+                                <div class="radio">
+                                   <label><input type="radio" name="build_number" value=5>五号楼</label>
+                                </div>
+                                <div class="radio">
+                                   <label><input type="radio" name="build_number" value=6>六号楼</label>
+                                </div>
+                                <div class="radio">
+                                   <label><input type="radio" name="build_number" value=7>七号楼</label>
+                                </div>
+                                <div class="radio">
+                                   <label><input type="radio" name="build_number" value=8>八号楼</label>
+                                </div>
                             </td>
                         </tr>
                     </table>
@@ -70,7 +107,7 @@
                         <tr>
                             <td>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="home_number" style='width:100%;height:34px;font-size:14px' placeholder="336" required>
+                                    <input type="number" class="form-control" name="home_number" style='width:100%;height:34px;font-size:14px' placeholder="例如:336" required>
                                   </div>
                             </td>
                         </tr>
@@ -78,22 +115,7 @@
                 </td>
             </tr>
 
-            <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;">
-                <td colspan="4">
-                    <table width="98%" cellpadding="0" cellspacing="5" align="center">
-                        <tr>
-                          <td><b><span style="margin-right:10px"></span>联系方式</b></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="phone" style='width:100%;height:34px;font-size:14px' placeholder="184****2878" >
-                                  </div>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
+
 
         <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;">
             <td colspan="4">

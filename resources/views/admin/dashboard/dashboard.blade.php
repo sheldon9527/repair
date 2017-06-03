@@ -7,7 +7,7 @@
             <div class="box box-solid bg-teal-gradient">
                 <div class="box-header">
                     <i class="fa fa-th"></i>
-                    <h3 class="box-title">新增维修统计</h3>
+                    <h3 class="box-title">维修统计</h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
                         </button>
@@ -26,7 +26,7 @@
             <div class="box box-solid bg-blue-gradient">
                 <div class="box-header">
                     <i class="fa fa-th"></i>
-                    <h3 class="box-title">待审批维修统计</h3>
+                    <h3 class="box-title">等待维修统计</h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn bg-blue-gradient btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
                         </button>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="box-body border-radius-none">
-                    <h4>总待审批维修: {{$statisticData['no_address']['total']}}</h4>
+                    <h4>总等待维修: {{$statisticData['no_address']['total']}}</h4>
                     <div id="new-designer-users"></div>
                 </div>
             </div>

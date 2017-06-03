@@ -14,52 +14,14 @@ Route::pattern('id', '[0-9]+');
 Route::pattern('oid', '[0-9]+');
 Route::pattern('alpha', '[A-Za-z]+');
 $api = app('api.router');
-
-Route::get('inquiry', [
+Route::get('/', [
     'as' => 'inquiry.get',
     'uses' => 'Front\HomeController@home',
 ]);
-Route::post('inquiry', [
+Route::post('/', [
     'as' => 'inquiry.post',
     'uses' => 'Front\HomeController@store',
 ]);
-
-$api->version('v1', ['namespace' => 'App\Http\Controllers\Api\V1'], function ($api) {
-
-    // 测试用的路由，查看服务器相关配置是否正确
-    if (env('APP_DEBUG')) {
-        $api->get('db/{param}', function ($param) {
-            \Artisan::call('db:seed', [
-                '--class' => $param,
-            ]);
-        });
-        $api->get('config/{path}', function ($path) {
-            return config($path) ?: 'config error';
-        });
-
-        $api->get('env/{key}', function ($key) {
-            $result = env($key) ?: 'env error';
-            return response()->json($result);
-        });
-
-        $api->get('artisan/{name}', function ($name) {
-            \Artisan::call($name);
-            return response()->json(\Artisan::output());
-        });
-
-        $api->get('migrate', function () {
-            \Artisan::call('migrate');
-            return response()->json(\Artisan::output());
-        });
-    }
-    /**
-     * 目的地地址
-     */
-    $api->get('teach/addresses', 'TeachAddressController@index');
-    $api->get('teach/addresses/{id}', 'TeachAddressController@show');
-    $api->post('teach/addresses', 'TeachAddressController@store');
-});
-
 /*
  * 运营后台
  */
@@ -95,62 +57,36 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'manager'], function () {
             'uses' => 'DashboardController@dashboard',
         ]);
         /**
-         * 目的地管理
+         * 维修管理
          */
-         Route::get('teach/addresses', [
-             'as' => 'admin.teach.addresses.index',
-             'uses' => 'TeachAddressController@index',
+         Route::get('repairs', [
+             'as' => 'admin.repairs.index',
+             'uses' => 'RepairAddressController@index',
          ]);
-         Route::get('teach/addresses/create', [
-             'as' => 'admin.teach.addresses.create',
-             'uses' => 'TeachAddressController@create',
+         Route::get('repairs/{id}', [
+             'as' => 'admin.repairs.show',
+             'uses' => 'RepairAddressController@show',
          ]);
-         Route::post('teach/addresses', [
-             'as' => 'admin.teach.addresses.store',
-             'uses' => 'TeachAddressController@store',
+         Route::delete('repairs/{id}', [
+             'as' => 'admin.repairs.destory',
+             'uses' => 'RepairAddressController@destory',
          ]);
-         Route::get('teach/addresses/{id}', [
-             'as' => 'admin.teach.addresses.show',
-             'uses' => 'TeachAddressController@show',
+         Route::put('repairs/{id}', [
+             'as' => 'admin.repairs.update',
+             'uses' => 'RepairAddressController@update',
          ]);
-         Route::delete('teach/addresses/{id}', [
-             'as' => 'admin.teach.addresses.destory',
-             'uses' => 'TeachAddressController@destory',
+         Route::get('repairs/multiDestory', [
+             'as' => 'admin.repairs.multiDestory',
+             'uses' => 'RepairAddressController@multiDestory',
          ]);
-         Route::get('teach/addresses/{id}/edit', [
-             'as' => 'admin.teach.addresses.edit',
-             'uses' => 'TeachAddressController@edit',
+         Route::get('repairs/multiUpdate', [
+             'as' => 'admin.repairs.multiUpdate',
+             'uses' => 'RepairAddressController@multiUpdate',
          ]);
-         Route::put('teach/addresses/{id}', [
-             'as' => 'admin.teach.addresses.update',
-             'uses' => 'TeachAddressController@update',
-         ]);
-         Route::get('teach/addresses/multiDestory', [
-             'as' => 'admin.teach.addresses.multiDestory',
-             'uses' => 'TeachAddressController@multiDestory',
-         ]);
-         Route::get('teach/addresses/multiUpdate', [
-             'as' => 'admin.teach.addresses.multiUpdate',
-             'uses' => 'TeachAddressController@multiUpdate',
-         ]);
-         /**
-          * 目的地的回收
-          */
-          Route::get('teach/addresses/recycle', [
-              'as' => 'admin.teach.addresses.recycle.index',
-              'uses' => 'TeachAddressController@recycleIndex',
-          ]);
-          /**
-           * 目的地审批
-           */
-          Route::get('teach/addresses/approval', [
-              'as' => 'admin.teach.addresses.approval.index',
-              'uses' => 'TeachAddressController@approvalIndex',
-          ]);
-          Route::get('teach/addresses/{id}/status', [
-              'as' => 'admin.teach.addresses.status.update',
-              'uses' => 'TeachAddressController@statusUpdate',
-          ]);
+        Route::get('teach/addresses/{id}/status', [
+          'as' => 'admin.repairs.status.update',
+          'uses' => 'RepairAddressController@statusUpdate',
+        ]);
 
         /**
          * admins
