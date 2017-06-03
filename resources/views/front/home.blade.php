@@ -164,7 +164,7 @@
 					<tr>
 						<td>
 							<div class="form-group">
-								<textarea name="description" class="form-control" rows="5"></textarea>
+								<textarea name="description" class="form-control" rows="5" required></textarea>
 							  </div>
 						</td>
 					</tr>

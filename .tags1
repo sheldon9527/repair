@@ -4,3 +4,6 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+UpdateCategoryRepairTable	/Users/Sheldon/Documents/Code/wenjuan/database/migrations/2017_06_03_154138_update_category_repair_table.php	/^class UpdateCategoryRepairTable extends Migration$/;"	class	line:6
+up	/Users/Sheldon/Documents/Code/wenjuan/database/migrations/2017_06_03_154138_update_category_repair_table.php	/^    public function up()$/;"	function	line:13
+down	/Users/Sheldon/Documents/Code/wenjuan/database/migrations/2017_06_03_154138_update_category_repair_table.php	/^    public function down()$/;"	function	line:25
