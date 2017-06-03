@@ -1,6 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>大学生宿管维修上报_西安思源学院</title>
+<title>西安思源学院</title>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <meta name="author" content="西安思源学院">
 <meta name="description" content="西安思源学院宿管维修" />
@@ -32,7 +32,7 @@
                 <td colspan="4">
                     <table width="98%" cellpadding="0" cellspacing="5" align="center">
                         <tr>
-                          <td><b><span style="color:red;margin-right:10px">*</span>姓名</b></td>
+                          <td><b><span style="color:red;margin-right:10px">*</span>联系人姓名</b></td>
                         </tr>
                         <tr>
                             <td>
