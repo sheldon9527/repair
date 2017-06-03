@@ -31,6 +31,6 @@ class HomeController extends BaseController
             $repair->categories()->attach($categoryIds);
         }
 
-        return view('front.404');
+        return redirect(route('inquiry.get'))->with('status', 'Update Success!');
     }
 }
