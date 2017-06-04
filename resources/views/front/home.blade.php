@@ -1,13 +1,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>西安思源学院</title>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="Content-Type" content="text/html;" />
 <meta name="author" content="西安思源学院">
 <meta name="description" content="西安思源学院宿管维修" />
 <link href="images/index.css" rel="stylesheet" type="text/css">
 <script src="/bower/jquery/dist/jquery.min.js" type="text/javascript"></script>
 <script src="/bower/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
 <link href="/bower/AdminLTE/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/front/css/myRewards.css">
 </head>
 <body>
 		<table cellSpacing=0 cellPadding=0 align=center width="960px">
@@ -15,10 +16,12 @@
 		    <td colSpan=3 id="banner">大学生宿管维修上报_西安思源学院</td>
 		  </tr>
 		</table>
+			<i class="fa fa-mobile" aria-hidden="true"></i>
 		<table width="960px" align="center" bgcolor="#FAFAFA">
 		<form id="form1" name="form1" method="post" action="" class="form-inline">
 			<tr>
-				<td id="info" colspan="6">为了同学们能够及时的上报需要维修的东西且能够得到更快的反馈，往同学们发现问题就及时的填写.</td>
+				<td id="info" colspan="12">为了同学们能够及时的上报需要维修的东西且能够得到更快的反馈，往同学们发现问题就及时的填写.
+				</td>
 			</tr>
 			<tr>
 				<td id="info2" colspan="6"></td>
@@ -229,7 +232,13 @@ $('#myTab a').click(function (e) {
     e.preventDefault();
     $(this).tab('show');
 });
-
+window.tctipConfig = {
+        buttonImageId:  3,
+        buttonTip:  "dashang",
+        list:{
+            alipay: {qrimg: "/images/sao.png"},
+        }
+};
 </script>
-
+<script src="/js/tctip.min.js"></script>
 </html>
