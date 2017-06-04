@@ -33,7 +33,7 @@
 						\Route::is('admin.admins.*', 'admin.categories.*','admin.dorms.*') ? 'active' : null
 					}}">
 					<a href="#">
-						<i class="fa fa-users"></i> <span>系统管理</span>
+						<i class="fa fa-cogs"></i> <span>系统管理</span>
 						<i class="fa fa-angle-left pull-right"></i>
 					</a>
 					<ul class="treeview-menu menu-open">
@@ -49,7 +49,7 @@
 					   </li>
 					   <li class="{{\Route::is('admin.dorms.*') ? 'active' : ''}}">
 						   <a href="{{route('admin.dorms.index')}}">
-							   <i class="fa fa-sitemap"></i><span>宿舍楼分类</span>
+							   <i class="fa fa-university"></i><span>宿舍楼分类</span>
 						   </a>
 					   </li>
 					</ul>
