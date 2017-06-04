@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Requests\Front\Repair\StoreRequest;
 use App\Models\Category;
+use App\Models\Dorm;
 use App\Models\Repair;
 
 class HomeController extends BaseController
@@ -11,8 +12,9 @@ class HomeController extends BaseController
     public function home()
     {
         $categories = Category::where('parent_id', 0)->with('children')->get();
+        $droms = Dorm::where('parent_id', 0)->with('children')->get();
 
-        return view('front.home', compact('categories'));
+        return view('front.home', compact('categories', 'droms'));
     }
 
     public function store(StoreRequest $request)
@@ -20,7 +22,7 @@ class HomeController extends BaseController
 
         $repair =  new Repair();
         $repair->name  = $request->get('name');
-        $repair->build_number  = $request->get('build_number');
+        $repair->dorm_id  = $request->get('dorm_id');
         $repair->home_number  = $request->get('home_number');
         $repair->phone  = $request->get('phone');
         $repair->description  = $request->get('description');

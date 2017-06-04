@@ -29,4 +29,9 @@ class Repair extends BaseModel
     {
         return $this->belongsToMany('App\Models\Category')->withTimestamps();
     }
+
+    public function dorm()
+    {
+         return $this->hasOne('App\Models\Dorm', 'id', 'dorm_id');
+    }
 }

@@ -153,5 +153,25 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'manager'], function () {
             'as' => 'admin.categories.destroy',
             'uses' => 'CategoryController@destroy',
         ]);
+
+        /**
+         * dorms
+         */
+        Route::get('dorms', [
+            'as' => 'admin.dorms.index',
+            'uses' => 'DormController@index',
+        ]);
+        Route::post('dorms', [
+            'as' => 'admin.dorms.store',
+            'uses' => 'DormController@store',
+        ]);
+        Route::put('dorms/{id}', [
+            'as' => 'admin.dorms.update',
+            'uses' => 'DormController@update',
+        ]);
+        Route::delete('dorms/{id}', [
+            'as' => 'admin.dorms.destroy',
+            'uses' => 'DormController@destroy',
+        ]);
     });
 });

@@ -3,7 +3,7 @@
 @section('content')
 <div class="box">
     <div class="box-header">
-        <h3 class="box-title">维修分类列表</h3>
+        <h3 class="box-title">宿舍楼分类列表</h3>
     </div>
 
     <!-- /.box-header -->
@@ -44,7 +44,7 @@
                                             <li><a class="edit-node"
                                                 data-toggle="modal"
                                                 data-target="#editNodeModal"
-                                                data-href="{{route('admin.categories.update', $root->id)}}"
+                                                data-href="{{route('admin.dorms.update', $root->id)}}"
                                                 data-node-name="{{$root->name}}"
                                                 data-node-icon="{{$root->icon_url}}"
                                                 data-node-en-name="{{$root->en_name}}">修改</a></li>
@@ -73,11 +73,11 @@
                                                 <li><a class="edit-node"
                                                     data-toggle="modal"
                                                     data-target="#editNodeModal"
-                                                    data-href="{{route('admin.categories.update', $child->id)}}"
+                                                    data-href="{{route('admin.dorms.update', $child->id)}}"
                                                     data-node-name="{{$child->name}}"
                                                     data-node-icon="{{$child->icon_url}}"
                                                     data-node-en-name="{{$child->en_name}}">修改</a></li>
-                                                <li><a href="{{route('admin.categories.destroy', $child->id)}}" data-method="delete" data-confirm="确定删除吗?">删除</a></li>
+                                                <li><a href="{{route('admin.dorms.destroy', $child->id)}}" data-method="delete" data-confirm="确定删除吗?">删除</a></li>
                                             </ul>
                                         </div>
                                     </td>
@@ -94,7 +94,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="addRootModal" tabindex="-1" role="dialog" aria-labelledby="addRootModal">
-    <form action="{{route('admin.categories.store')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+    <form action="{{route('admin.dorms.store')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -121,7 +121,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="addChildModal" tabindex="-1" role="dialog" aria-labelledby="addChildModal">
-    <form action="{{route('admin.categories.store')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+    <form action="{{route('admin.dorms.store')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
         {{ csrf_field() }}
         <input type="hidden" name="parent_id" value="0">
         <div class="modal-dialog" role="document">
@@ -215,7 +215,7 @@
             $id = $(this).data('id');
 
             $.ajax({
-                url: '/manager/categories/' + $id,
+                url: '/manager/dorms/' + $id,
                 type: 'POST',
                 data:{
                     operate: operate,

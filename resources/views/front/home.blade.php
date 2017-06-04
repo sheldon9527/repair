@@ -88,29 +88,30 @@
                         </tr>
                         <tr>
                             <td>
-                                <div class="radio">
-                                   <label><input type="radio" name="build_number" value=1>一号楼</label>
-                                </div>
-                                <div class="radio">
-                                   <label><input type="radio" name="build_number" value=2>二号楼</label>
-                                </div>
-                                <div class="radio">
-                                   <label><input type="radio" name="build_number" value=3>三号楼</label>
-                                </div>
-                                <div class="radio">
-                                   <label><input type="radio" name="build_number" value=4>四号楼</label>
-                                </div>
-                                <div class="radio">
-                                   <label><input type="radio" name="build_number" value=5>五号楼</label>
-                                </div>
-                                <div class="radio">
-                                   <label><input type="radio" name="build_number" value=6>六号楼</label>
-                                </div>
-                                <div class="radio">
-                                   <label><input type="radio" name="build_number" value=7>七号楼</label>
-                                </div>
-                                <div class="radio">
-                                   <label><input type="radio" name="build_number" value=8>八号楼</label>
+                                <div>
+                                    <ul id="myTab" class="nav nav-tabs" role="tablist">
+                                        @foreach($droms as $key => $drom)
+                                            <li role="presentation" @if($key == 0) class="active" @endif>
+                                                <a href="#drom-{{$drom->id}}" role="tab" style="color:black">{{$drom->name}}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                    <div id="myTabContent" class="tab-content">
+                                        @foreach($droms as  $key => $drom)
+                                            <div role="tabpanel" class="tab-pane @if($key == 0) active @endif in" id="drom-{{$drom->id}}">
+                                                @foreach($drom->children as $child)
+                                                    <div>
+                                                        <label class="checkbox-inline ng-scope">
+                                                            <div class="radio">
+                                                               <label><input type="radio" name="dorm_id" value="{{$child->id}}">{{$child->name}}</label>
+                                                            </div>
+
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -221,6 +222,10 @@
 </body>
 <script>
 $('#myTabs a').click(function (e) {
+    e.preventDefault();
+    $(this).tab('show');
+});
+$('#myTab a').click(function (e) {
     e.preventDefault();
     $(this).tab('show');
 });

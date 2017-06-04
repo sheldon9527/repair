@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
 use App\Models\Repair;
-use Geohash\Geohash;
+use App\Models\Dorm;
 
 class RepairAddressController extends BaseController
 {
@@ -18,8 +18,8 @@ class RepairAddressController extends BaseController
         if ($home_number = $this->request->get('home_number')) {
             $repairs->where('home_number', $home_number);
         }
-        if ($type = $this->request->get('build_number')) {
-            $repairs->where('build_number', $type);
+        if ($dorm_id = $this->request->get('dorm_id')) {
+            $repairs->where('dorm_id', $dorm_id);
         }
         if ($status = $this->request->get('status')) {
             $repairs->where('status', $status);
@@ -36,13 +36,15 @@ class RepairAddressController extends BaseController
         $repairs     = $repairs->orderBy('id', 'desc')->paginate(10);
         $searchColumns = [
             'home_number'   => $home_number,
-            'build_number'  => $type,
+            'dorm_id'       => $dorm_id,
             'status'        => $status,
             'startTime'     => $startTime,
             'endTimte'      => $endTimte,
             'name'          => $name,
         ];
-        return view('admin.repairs.index', compact('repairs', 'searchColumns'));
+        $rootDroms = Dorm::where('parent_id', 0)->with('children')->get();
+
+        return view('admin.repairs.index', compact('repairs', 'searchColumns', 'rootDroms'));
     }
     /**
      * [show 目的地详情]

@@ -10,7 +10,7 @@ class StoreRequest extends Request
     {
         $rules = [
             'name'                => 'required|string',
-            'build_number'        => 'required|string',
+            'dorm_id'             => 'required|string',
             'home_number'         => 'required|string',
             'description'         => 'required|string',
             'category_ids'        => 'required|array',
@@ -32,7 +32,7 @@ class StoreRequest extends Request
     {
         return [
             'name.required'              => '名称不能为空',
-            'build_number.required'      => '楼号不能为空',
+            'dorm_id.required'           => '楼号不能为空',
             'home_number.required'       => '宿舍号不能为空',
             'phone.required'             => '联系方式不能为空',
             'phone.regex'                => '联系方式填写有误',

@@ -37,16 +37,15 @@
                                          </div>
                                           <div class="form-group">
                                             <label><h4>楼号</h4></label>
-                                              <select name="build_number" id="status" class="form-control">
+                                              <select name="dorm_id" id="status" class="form-control">
                                                   <option value="">全部</option>
-                                                  <option value=1 @if($searchColumns['build_number'] == 1) selected = "selected" @endif>一号楼</option>
-                                                  <option value=2 @if($searchColumns['build_number'] == 2) selected = "selected" @endif>二号楼</option>
-                                                   <option value=3 @if($searchColumns['build_number'] == 3) selected = "selected" @endif>三号楼</option>
-                                                   <option value=4 @if($searchColumns['build_number'] == 4) selected = "selected" @endif>四号楼</option>
-                                                   <option value=5 @if($searchColumns['build_number'] == 5) selected = "selected" @endif>五号楼</option>
-                                                    <option value=6 @if($searchColumns['build_number'] == 6) selected = "selected" @endif>六号楼</option>
-                                                    <option value=7 @if($searchColumns['build_number'] == 7) selected = "selected" @endif>七号楼</option>
-                                                    <option value=8 @if($searchColumns['build_number'] == 8) selected = "selected" @endif>八号楼</option>
+                                                  @foreach($rootDroms as $root)
+                                                      <option disabled="disabled">{{$root->name}} </option>
+                                                      @foreach($root->children as $children)
+                                                      <option value="{{$children->id}}" @if($searchColumns['dorm_id'] == $children->id) selected = "selected" @endif>&nbsp;&nbsp;&nbsp;&nbsp;--|{{$children->name}}
+                                                      </option>
+                                                      @endforeach
+                                                  @endforeach
                                               </select>
                                           </div>
                                           <div class="form-group">
@@ -100,7 +99,7 @@
                                                     <h4 class="box-title">联系方式:{{$repair->phone}}</h4>
                                                 </div>
                                                 <div style="margin-top:15px;">
-                                                    <h4 class="box-title">楼号:{{$repair->build_number}}</h4>
+                                                    <h4 class="box-title">楼号:{{$repair->dorm->parent->name}}[{{$repair->dorm->name}}]</h4>
                                                 </div>
                                                 <div style="margin-top:15px;">
                                                     <h4 class="box-title">宿舍号:{{$repair->home_number}}</h4>

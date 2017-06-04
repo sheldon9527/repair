@@ -30,7 +30,7 @@
 					</ul>
 				</li>
 				<li class="treeview {{
-						\Route::is('admin.admins.*', 'admin.categories.*') ? 'active' : null
+						\Route::is('admin.admins.*', 'admin.categories.*','admin.dorms.*') ? 'active' : null
 					}}">
 					<a href="#">
 						<i class="fa fa-users"></i> <span>系统管理</span>
@@ -45,6 +45,11 @@
 					   <li class="{{\Route::is('admin.categories.*') ? 'active' : ''}}">
 						   <a href="{{route('admin.categories.index')}}">
 							   <i class="fa fa-sitemap"></i><span>维修分类</span>
+						   </a>
+					   </li>
+					   <li class="{{\Route::is('admin.dorms.*') ? 'active' : ''}}">
+						   <a href="{{route('admin.dorms.index')}}">
+							   <i class="fa fa-sitemap"></i><span>宿舍楼分类</span>
 						   </a>
 					   </li>
 					</ul>
