@@ -7,12 +7,12 @@ a:visited { color:#fff; text-decoration: none;}
 a:active { color:#fff; text-decoration: none;}
 a:hover { color:#ffff00; text-decoration: underline;}
 
-#banner{ font-size:40px; color:#fff; font-family:"����"; padding-left:150px; background:url(../images/logo.jpg); width:960px; height:160px;}
+#banner{ font-size:40px; color:#fff; font-family:""; padding-left:150px; width:960px; height:160px;}
 #info { font-size:14px; background-color:#F0F7FF; padding:10px 20px; line-height:25px;}
 #info2 { background-color:#AECEFD; height:5px;}
 #BigTitle { padding:10px; font-size:15px; font-weight:bold; line-height:25px;}
 
-#Notice { background:url(../images/Notice.jpg); width:350px; height:337px; margin:auto; }
+#Notice { width:350px; height:337px; margin:auto; }
 #Noticeb{ padding:160px 50px 60px 105px; color:#333333; font-size:14px; font-weight:bold;}
 #Notice a { color:#000000; text-decoration:none;}
 #Notice a:hover { color:#0066FF; text-decoration: underline;}
