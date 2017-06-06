@@ -60,14 +60,12 @@
                                           <div class="form-group">
                                                <label><h4>宿舍号</h4></label>
                                               <input type="number"  class="form-control" name="home_number" placeholder="例如:336" value="{{$searchColumns['home_number']}}">
-                                          </div>
-
+                                          </div></br></br>
                                           <div>
                                               <div class="form-group">
                                                  <label><h4>用户姓名</h4></label>
                                                 <input type="text"  class="form-control" name="name" placeholder="例如:Sheldon Yi" value="{{$searchColumns['name']}}">
                                                 </div>
-
                                               <div class="form-group">
                                                   <label>开始时间</label>
                                                       <input  type="text" name="start_time" value="{{$searchColumns['startTime']}}" class="form_datatime form-control form-control" placeholder="开始时间">
