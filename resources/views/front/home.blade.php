@@ -11,13 +11,13 @@
 <link rel="stylesheet" href="/front/css/myRewards.css">
 </head>
 <body>
-		<table cellSpacing=0 cellPadding=0 align=center width="960px">
+		<table cellSpacing=0 cellPadding=0 align=center width="66%">
 		  <tr>
 		    <td colSpan=3 id="banner">大学生宿管维修上报_西安思源学院</td>
 		  </tr>
 		</table>
 			<i class="fa fa-mobile" aria-hidden="true"></i>
-		<table width="960px" align="center" bgcolor="#FAFAFA">
+		<table width="66%" align="center" bgcolor="#FAFAFA">
 		<form id="form1" name="form1" method="post" action="" class="form-inline">
 			<tr>
 				<td id="info" colspan="12">为了同学们能够及时的上报需要维修的东西且能够得到更快的反馈，往同学们发现问题就及时的填写.
@@ -32,7 +32,7 @@
                 echo "<script>alert('操作成功');location.href='".$_SERVER["HTTP_REFERER"]."';</script>";
                     ?>
             @endif
-            <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:10px;">
+            <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:20px;">
                 <td colspan="4">
                     <table width="98%" cellpadding="0" cellspacing="5" align="center">
                         <tr>
@@ -51,16 +51,16 @@
                     </table>
                 </td>
             </tr>
-            <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:10px;">
+            <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:20px;">
                 <td colspan="4">
                     <table width="98%" cellpadding="0" cellspacing="5" align="center">
                         <tr>
-                          <td><b><span style="color:red;margin-right:10px">*</span>联系人姓名</b></td>
+                          <td style='height:50px;'><b><span style="color:red;margin-right:10px">*</span>联系姓名</b></td>
                         </tr>
                         <tr>
                             <td>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="name" style='width:100%;height:34px;font-size:14px' placeholder="例如:Sheldon Yi" required>
+                                    <input type="text" class="form-control" name="name" style='width:100%;height:40px;font-size:16px' placeholder="Sheldon Yi" required>
                                   </div>
                             </td>
                         </tr>
@@ -71,23 +71,23 @@
                 <td colspan="4">
                     <table width="98%" cellpadding="0" cellspacing="5" align="center">
                         <tr>
-                          <td><b><span style="margin-right:10px"></span>联系方式</b></td>
+                          <td style='height:50px;'><b><span style="margin-right:10px"></span><span style="margin-right:10px">*</span>联系方式</b></td>
                         </tr>
                         <tr>
                             <td>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="phone" style='width:100%;height:34px;font-size:14px' placeholder="例如:184****2878" >
+                                    <input type="text" class="form-control" name="phone" style='width:100%;height:40px;font-size:16px' placeholder="184****2878" >
                                   </div>
                             </td>
                         </tr>
                     </table>
                 </td>
             </tr>
-            <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:10px;">
+            <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:20px;">
                 <td colspan="4">
                     <table width="98%" cellpadding="0" cellspacing="5" align="center">
                         <tr>
-                          <td><b><span style="color:red;margin-right:10px">*</span>楼号</b></td>
+                          <td style='height:50px;' ><b><span style="color:red;margin-right:10px">*</span>宿舍楼号</b></td>
                         </tr>
                         <tr>
                             <td>
@@ -122,16 +122,16 @@
                 </td>
             </tr>
 
-            <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:10px;">
+            <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:20px;">
                 <td colspan="4">
                     <table width="98%" cellpadding="0" cellspacing="5" align="center">
                         <tr>
-                          <td><b><span style="color:red;margin-right:10px">*</span>宿舍号</b></td>
+                          <td style='height:50px;'><b><span style="color:red;margin-right:10px">*</span>宿舍房号</b></td>
                         </tr>
                         <tr>
                             <td>
                                 <div class="form-group">
-                                    <input type="number" class="form-control" name="home_number" style='width:100%;height:34px;font-size:14px' placeholder="例如:336" required>
+                                    <input type="number" class="form-control" name="home_number" style='width:100%;height:40px;font-size:16px' placeholder="336" required>
                                   </div>
                             </td>
                         </tr>
@@ -139,13 +139,11 @@
                 </td>
             </tr>
 
-
-
-        <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:10px;">
+        <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:20px;">
             <td colspan="4">
                 <table width="98%" cellpadding="0" cellspacing="5" align="center">
                     <tr>
-                      <td><span style="color:red;margin-right:10px">*</span><b>报修</b></td>
+                      <td style='height:50px;'><span style="color:red;margin-right:10px">*</span><b>报修种类</b></td>
                     </tr>
                     <tr>
                         <td>
@@ -180,23 +178,23 @@
             </td>
         </tr>
 
-        <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:10px;">
+        <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:20px;">
             <td colspan="4">
                 <table width="98%" cellpadding="0" cellspacing="5" align="center">
                     <tr>
-                      <td><b><span style="color:red;margin-right:10px;">*</span>报修详情</b></td>
+                      <td style='height:50px;'><b><span style="color:red;margin-right:10px;">*</span>报修详情</b></td>
                     </tr>
                     <tr>
                         <td>
                             <div class="form-group">
-                                <textarea name="description" class="form-control" rows="5" required></textarea>
+                                <textarea name="description" class="form-control" rows="5" placeholder="描述详情便于报修。。。。。。" style='font-size:16px' required></textarea>
                               </div>
                         </td>
                     </tr>
                 </table>
             </td>
         </tr>
-        <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:10px;">
+        <tr onMouseOver="this.bgColor='#F0F7FF'" bgcolor="#FAFAFA" onMouseOut="this.bgColor='#FAFAFA'" style="margin-bottom:10px;margin-top:20px;">
             <td colspan="4">
                 <table width="98%" cellpadding="0" cellspacing="5" align="center">
                     <tr>
@@ -217,7 +215,7 @@
 
         </form>
         </table>
-        <table cellSpacing=0 cellPadding=0 align=center bgcolor="#FAFAFA" background="images/botbj.jpg" width="960px">
+        <table cellSpacing=0 cellPadding=0 align=center bgcolor="#FAFAFA" background="images/botbj.jpg" width="66%">
           <tr>
             <td height=60 align="center"><a href="" target="_blank">西安思源学院</a> Copyright 2016-2017 西安思源学院 版权所有 大学生宿管维修上报_西安思源学院 </td>
           </tr>

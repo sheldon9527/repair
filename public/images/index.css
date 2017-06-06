@@ -7,7 +7,7 @@ a:visited { color:#fff; text-decoration: none;}
 a:active { color:#fff; text-decoration: none;}
 a:hover { color:#ffff00; text-decoration: underline;}
 
-#banner{ font-size:40px; color:#fff; font-family:""; padding-left:150px; width:960px; height:160px;background:url(../images/logo.jpg);}
+#banner{ font-size:40px; color:#fff; font-family:""; padding-left:150px; width:66%; height:160px;background:url(../images/logo.jpg);}
 #info { font-size:14px; background-color:#F0F7FF; padding:10px 20px; line-height:25px;}
 #info2 { background-color:#AECEFD; height:5px;}
 #BigTitle { padding:10px; font-size:15px; font-weight:bold; line-height:25px;}
