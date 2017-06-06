@@ -3,7 +3,7 @@
 @section('content')
 <div class="box">
     <div class="box-header">
-        <h3 class="box-title">宿舍楼分类列表</h3>
+        <h3 class="box-title">宿舍楼列表</h3>
     </div>
 
     <!-- /.box-header -->
@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-12">
                 @include('admin.common.errors')
-                <a data-toggle="modal" data-target="#addRootModal" class="pull-right btn btn-success" type="button">添加主分类</a>
+                <a data-toggle="modal" data-target="#addRootModal" class="pull-right btn btn-success" type="button">添加宿舍种类</a>
             </div>
         </div>
         <div class="row">&nbsp;</div>
@@ -20,8 +20,8 @@
                 <table id="category-table" class="table table-bordered table-striped text-center">
                     <thead>
                     <tr>
-                        <th>分类id</th>
-                        <th>分类名称</th>
+                        <th>宿舍楼id</th>
+                        <th>宿舍楼名称</th>
                         <th>排序</th>
                         <th>操作</th>
                     </tr>
@@ -100,7 +100,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">添加主分类</h4>
+                    <h4 class="modal-title">添加宿舍种类</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">

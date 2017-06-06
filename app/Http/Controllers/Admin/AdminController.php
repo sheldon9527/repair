@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Admin;
+use App\Models\Role;
 use App\Http\Requests\Admin\Admin\StoreRequest;
 use App\Http\Requests\Admin\Admin\UpdateRequest;
-use App\Models\Admin;
 
 class AdminController extends BaseController
 {
@@ -15,8 +16,8 @@ class AdminController extends BaseController
         $searchColumns = ['name', 'cellphone', 'status'];
 
         if ($name = $this->request->get('name')) {
-            $admins->where('first_name', 'like', '%' . $name . '%')
-                ->orWhere('last_name', 'like', '%' . $name . '%');
+            $admins->where('first_name', 'like', '%'.$name.'%')
+                ->orWhere('last_name', 'like', '%'.$name.'%');
         }
 
         if ($cellphone = $this->request->get('cellphone')) {
@@ -26,14 +27,12 @@ class AdminController extends BaseController
         if ($status = $this->request->get('status')) {
             $admins->where('status', $status);
         }
-
         $admins = $admins->orderBy('id', 'desc')->paginate();
-
         $params = array_filter($this->request->all());
-
         $admins->appends($params);
-
-        return view('admin.company.index', compact('admins', 'searchColumns'));
+        $roles = Role::all();
+        
+        return view('admin.company.index', compact('admins', 'searchColumns', 'roles'));
     }
 
     public function store(StoreRequest $request)
@@ -45,13 +44,17 @@ class AdminController extends BaseController
             }
         }
 
-        $admin            = new Admin();
-        $admin->username  = $request->get('username');
-        $admin->email     = $request->get('email');
+        $admin = new Admin();
+        $admin->username = $request->get('username');
+        $admin->email = $request->get('email');
         $admin->cellphone = $request->get('cellphone');
-        $admin->password  = bcrypt(trim($request->get('password')));
-        $admin->status    = $request->get('status');
+        $admin->password = bcrypt(trim($request->get('password')));
+        $admin->status = $request->get('status');
         $admin->save();
+
+        if ($roles = $request->get('roles')) {
+            $admin->attachRoles($roles);
+        }
 
         return redirect(route('admin.admins.index'));
     }
@@ -62,8 +65,9 @@ class AdminController extends BaseController
         if (!$admin) {
             abort(404);
         }
+        $roles = Role::all();
 
-        return view('admin.company.edit', compact('admin'));
+        return view('admin.company.edit', compact('admin', 'roles'));
     }
 
     public function update($id, UpdateRequest $request)
@@ -74,19 +78,24 @@ class AdminController extends BaseController
             abort(404);
         }
 
-        if ($username = $request->get('username') && $admin->isDirty('username')) {
+        if ($username = $request->get('username')  && $admin->isDirty('username')) {
             $exist = Admin::where('username', $username)->exists();
             if ($exist) {
                 return redirect(route('admin.admins.edit', $id))->withErrors(['登陆账号已经存在']);
             }
         }
 
-        $admin->username  = $request->get('username');
-        $admin->email     = $request->get('email');
+        $admin->username = $request->get('username');
+        $admin->email = $request->get('email');
         $admin->cellphone = $request->get('cellphone');
 
         if ($password = $request->get('password')) {
             $admin->password = bcrypt(trim($request->get('password')));
+        }
+
+        if ($roles = $request->get('roles')) {
+            $admin->roles()->detach();
+            $admin->attachRoles($roles);
         }
 
         $admin->status = $request->get('status');
@@ -117,8 +126,8 @@ class AdminController extends BaseController
         if ($admin->isSuper) {
             abort(403);
         }
-
         $admin->delete();
+
         return redirect(route('admin.admins.index'));
     }
 }

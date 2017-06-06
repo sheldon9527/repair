@@ -36,6 +36,9 @@ class Kernel extends HttpKernel
         'oauth-user' => \LucaDegasperi\OAuth2Server\Middleware\OAuthUserOwnerMiddleware::class,
         'oauth-client' => \LucaDegasperi\OAuth2Server\Middleware\OAuthClientOwnerMiddleware::class,
         'check-authorization-params' => \LucaDegasperi\OAuth2Server\Middleware\CheckAuthCodeRequestMiddleware::class,
-        'csrf' => \App\Http\Middleware\VerifyCsrfToken::class
+        'csrf' => \App\Http\Middleware\VerifyCsrfToken::class,
+        'role' => \Zizaco\Entrust\Middleware\EntrustRole::class,
+        'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
+        'ability' => \Zizaco\Entrust\Middleware\EntrustAbility::class,
     ];
 }

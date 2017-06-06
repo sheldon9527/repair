@@ -42,5 +42,29 @@ class RouteServiceProvider extends ServiceProvider
 
     public function register()
     {
+
+        // 增加路由需要对应的权限
+        $filters = [
+            'manager/categories/*'  => 'categories.manage',
+            'manager/dorms/*'       => 'dorms.manage',
+            'manager/admins/*'      => 'admins.manage',
+            'manager/repairs/*'     => 'repairs.manage',
+        ];
+
+        foreach ($filters as $route => $filter) {
+             \Route::filter($filter, function () use ($filter) {
+                $user = app('admin')->user();
+
+                if (!$user) {
+                    return;
+                }
+
+                if ((!$user->isSuper && !$user->can($filter))) {
+                    abort(403);
+                }
+             });
+
+            \Route::when($route, $filter);
+        }
     }
 }

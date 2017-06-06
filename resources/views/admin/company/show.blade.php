@@ -1,9 +1,13 @@
 @extends('admin.common.layout') @section('content')
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-md-2">
+        @include('admin.company.nav')
+    </div>
+    <div class="col-lg-10">
         <div class="box-header">
-            <h3 class="box-title">管理员详情</h3>
+            <h3 class="box-title">管理员用户详情</h3>
         </div>
+
         <div class="ibox float-e-margins">
             <div class="ibox-content">
                 <table class="table table-hover table-striped">
@@ -23,6 +27,14 @@
                         <tr>
                             <td>邮箱</td>
                             <td>{{$admin->email}}</td>
+                        </tr>
+                        <tr>
+                            <td>角色</td>
+                            <td>
+                                @foreach($admin->roles as $role)
+                                    <span class="badge badge-info">{{$role->display_name}}</span>
+                                @endforeach
+                            </td>
                         </tr>
                         <tr>
                             <td>状态</td>

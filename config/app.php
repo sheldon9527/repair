@@ -171,6 +171,10 @@ return [
         Ignited\LaravelOmnipay\LaravelOmnipayServiceProvider::class,
         // authorize
         App\Providers\AuthServiceProvider::class,
+        //Entrust
+        Zizaco\Entrust\EntrustServiceProvider::class,
+        // view composer
+        App\Providers\ComposerServiceProvider::class,
     ],
 
     /*
@@ -233,6 +237,8 @@ return [
         'Omnipay'    => Ignited\LaravelOmnipay\Facades\OmnipayFacade::class,
         //wechat
         'Wechat'     => Overtrue\LaravelWechat\Facade::class,
+        //Entrust
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
 
     ],
 ];

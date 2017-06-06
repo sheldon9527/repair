@@ -1,12 +1,15 @@
 @extends('admin.common.layout') @section('content')
 
 <div class="row">
-
-    <div class="col-md-12">
+    <div class="col-md-2">
+        @include('admin.company.nav')
+    </div>
+    <div class="col-md-10">
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">管理员列表</h3>
             </div>
+
             <!-- /.box-header -->
             <div class="box-body">
                 <div class="row">
@@ -15,6 +18,7 @@
                             <button type="button" class="btn btn-default dropdown-toggle btn-search">筛选 <span class="caret"></span></button>
                             <div class="dropdown-menu dropdown-menu-right dropdown-search" role="menu">
                                 <form class="form-horizontal" role="form">
+                                    {{ csrf_field() }}
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">name</label>
                                         <div class="col-sm-10">
@@ -43,7 +47,7 @@
                         </div>
 
                         @include('admin.common.search-tips')
-                        <button type="button" class="pull-right btn btn-info" data-toggle="modal" data-target="#clientModel">添加管理用户</button>
+                        <button type="button" class="pull-right btn btn-default" data-toggle="modal" data-target="#clientModel">添加管理用户</button>
                     </div>
                 </div>
 
@@ -58,6 +62,8 @@
                                     <td>登陆账号</td>
                                     <td>联系电话</td>
                                     <td>邮箱</td>
+                                    <td>角色</td>
+                                    <td>超级管理员</td>
                                     <td>状态</td>
                                     <td>操作</td>
                                 </tr>
@@ -71,6 +77,18 @@
                                     <td>{{$admin->username}}</td>
                                     <td>{{$admin->cellphone}}</td>
                                     <td>{{$admin->email}}</td>
+                                    <td>
+                                        @foreach($admin->roles as $role)
+                                            <span class="badge badge-info">{{$role->display_name}}</span>
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        @if ($admin->isSuper)
+                                            <span class="text-info"><i class="fa fa-check" aria-hidden="true"></i></span>
+                                        @else
+                                            <span class="text-danger"><i class="fa fa-close" aria-hidden="true"></i></span>
+                                        @endif
+                                    </td>
                                     <td>{{$admin->statusLabel[$admin->status]}}</td>
                                     <td>
                                         <div class="btn-group">
@@ -79,7 +97,9 @@
                                             <ul class="dropdown-menu slim-menu">
                                                 <li><a href="{{route('admin.admins.edit', [$admin->id])}}">编辑</a></li>
                                                 <li><a href="{{route('admin.admins.show', [$admin->id])}}">详情</a></li>
-                                                <li><a data-method="DELETE" href="{{route('admin.admins.destroy', [$admin->id])}}">删除</a></li>
+                                                @if(!$admin->isSuper)
+                                                <li><a data-method="DELETE" data-confirm="你确定删除该管理员吗" href="{{route('admin.admins.destroy', [$admin->id])}}">删除</a></li>
+                                                @endif
                                             </ul>
                                         </div>
                                     </td>
@@ -102,6 +122,7 @@
 
         <div class="modal fade" id="clientModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <form action="{{route('admin.admins.store')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                {{ csrf_field() }}
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -142,6 +163,17 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="col-sm-4 control-label">角色:</label>
+                                <div class="col-sm-8">
+                                    <select name="roles[]" class="selectpicker" multiple>
+                                        @foreach($roles as $role)
+                                            <option value="{{ $role->id }}">{{$role->display_name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="col-sm-4 control-label"><span class="text-red">*</span>状态</label>
                                 <div class="col-sm-8">
                                     <select name="status" class="selectpicker" data-width="auto" required="">
@@ -153,7 +185,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                            <button type="submit" class="btn btn-info">保存</button>
+                            <button type="submit" class="btn btn-primary">保存</button>
                         </div>
                     </div>
                 </div>

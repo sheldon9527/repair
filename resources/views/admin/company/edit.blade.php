@@ -1,13 +1,17 @@
 @extends('admin.common.layout') @section('content')
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-md-2">
+        @include('admin.company.nav')
+    </div>
+    <div class="col-lg-10">
         <div class="box-header">
-            <h3 class="box-title">管理员编辑</h3>
+            <h3 class="box-title">管理员用户编辑</h3>
         </div>
         <div class="ibox float-e-margins">
             @include('admin.common.errors')
             <div class="ibox-content">
                 <form method="post" action="{{route('admin.admins.update', [$admin->id])}}" id="form" enctype="multipart/form-data" class="form-horizontal">
+                    {{ csrf_field() }}
                     <input type="hidden" name="_method" value="PUT" />
                     <div class="form-group">
                         <label class="col-sm-2 control-label"><span class="text-red">*</span>登陆账号:</label>
@@ -26,6 +30,16 @@
                         <label class="col-sm-2 control-label">邮箱:</label>
                         <div class="col-sm-3">
                             <input type="text" name="email" value="{{$admin->email}}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">角色:</label>
+                        <div class="col-sm-3">
+                            <select name="roles[]" class="selectpicker" multiple>
+                                @foreach($roles as $role)
+                                    <option value="{{ $role->id }}" @if($admin->hasRole($role->name)) selected="selected" @endif>{{$role->display_name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
 

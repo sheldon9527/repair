@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use Zizaco\Entrust\Traits\EntrustUserTrait;
+
 class Admin extends BaseModel
 {
+    use EntrustUserTrait;
 
     protected $hidden = [
         'extra',
@@ -18,12 +21,17 @@ class Admin extends BaseModel
     ];
 
     public $statusLabel = [
-        'ACTIVE'   => '已激活',
+        'ACTIVE' => '已激活',
         'INACTIVE' => '未激活',
     ];
 
     public function getAvatarAttribute()
     {
         return url(config('image.defaultImg'));
+    }
+
+    public function getIsSuperAttribute()
+    {
+        return (bool) in_array($this->username, config('admin.super'));
     }
 }
