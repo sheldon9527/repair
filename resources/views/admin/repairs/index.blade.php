@@ -86,7 +86,7 @@
                                         <input name="" type="checkbox">
                                     </th>
                                     <th class="sorting" style="text-align:center; font-size:20px" tabindex="0"  rowspan="1" colspan="1">
-                                        保修相关信息
+                                        报修相关信息
                                     </th>
                                 </tr>
                             </thead>
