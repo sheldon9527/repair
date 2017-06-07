@@ -4,19 +4,19 @@
         <div class="box-header">
             <h3 class="box-title">维修列表</h3>
         </div>
-		@inject('repairPresenter','App\Presenters\RepairPresenter');
+		@inject('repairPresenter','App\Presenters\RepairPresenter')
         <div class="box-body">
             <div class="row">
                 <div class="col-sm-12">
 					@if (session('delete'))
 						<?php
                         echo "<script>alert('Delete Success!');location.href='".$_SERVER["HTTP_REFERER"]."';</script>";
-                            ?>
+                        ?>
                     @endif
                     @if (session('update'))
                         <?php
                         echo "<script>alert('Update Success!');location.href='".$_SERVER["HTTP_REFERER"]."';</script>";
-                            ?>
+                        ?>
                     @endif
                     <div class="col-md-12">
                         <div class="box box-info box-min-height">
@@ -32,7 +32,7 @@
                                      <a class="btn btn-info" id='finish'>完成选中</a>
                                  </div>
                                   <div class="form-group">
-                                    <label><h4>楼号</h4></label>
+                                    <label><h4>宿舍楼号</h4></label>
                                       <select name="dorm_id" id="status" class="form-control">
                                           <option value="">全部</option>
                                           @foreach($rootDroms as $root)
@@ -45,7 +45,7 @@
                                       </select>
                                   </div>
                                   <div class="form-group">
-                                      <label><h4>维修类型</h4></label>
+                                      <label><h4>报修种类</h4></label>
                                       <select name="status" id="status" class="form-control">
                                           <option value="">全部</option>
                                           <option value="PEND" @if($searchColumns['status'] =='PEND') selected = "selected" @endif>未维修</option>
@@ -54,13 +54,13 @@
                                       </select>
                                   </div>
                                   <div class="form-group">
-                                       <label><h4>宿舍号</h4></label>
-                                      <input type="number"  class="form-control" name="home_number" placeholder="例如:336" value="{{$searchColumns['home_number']}}">
+                                       <label><h4>宿舍房号</h4></label>
+                                      <input type="number"  class="form-control" name="home_number" placeholder="336" value="{{$searchColumns['home_number']}}">
                                   </div></br></br>
                                   <div>
                                       <div class="form-group">
-                                         <label><h4>用户姓名</h4></label>
-                                        <input type="text"  class="form-control" name="name" placeholder="例如:Sheldon Yi" value="{{$searchColumns['name']}}">
+                                         <label><h4>联系姓名</h4></label>
+                                        <input type="text"  class="form-control" name="name" placeholder="SheldonYi" value="{{$searchColumns['name']}}">
                                         </div>
                                       <div class="form-group">
                                           <label>开始时间</label>
@@ -83,7 +83,7 @@
                         <table id="example2" class="table table-bordered table-hover dataTable" role="grid" >
                             <thead>
                                 <tr role="row">
-                                    <th class="sorting" style="text-align:center;" tabindex="0"  rowspan="1" colspan="1">
+                                    <th class="sorting" style="text-align:center;width:6%" tabindex="0"  rowspan="1" colspan="1">
                                         <input name="" type="checkbox">
                                     </th>
                                     <th class="sorting" style="text-align:center; font-size:20px" tabindex="0"  rowspan="1" colspan="1">
@@ -99,16 +99,16 @@
                                             <div class="row">
                                                 <div class="col-xs-6 col-md-3">
                                                     <div style="margin-top:15px;">
-                                                        <h4 class="box-title">名字:{{$repair->name}}</h4>
+                                                        <h4 class="box-title">联系姓名:{{$repair->name}}</h4>
                                                     </div>
                                                     <div style="margin-top:15px;">
                                                         <h4 class="box-title">联系方式:{{$repair->phone}}</h4>
                                                     </div>
                                                     <div style="margin-top:15px;">
-                                                        <h4 class="box-title">楼号:{{$repair->dorm->parent->name}}[{{$repair->dorm->name}}]</h4>
+                                                        <h4 class="box-title">宿舍楼号:{{$repair->dorm->parent->name}}[{{$repair->dorm->name}}]</h4>
                                                     </div>
                                                     <div style="margin-top:15px;">
-                                                        <h4 class="box-title">宿舍号:{{$repair->home_number}}</h4>
+                                                        <h4 class="box-title">宿舍房号:{{$repair->home_number}}</h4>
                                                     </div>
                                                     <div style="margin-top:15px;">
                                                         <h4 class="box-title">创建时间:{{$repair->created_at}}</h4>
@@ -116,7 +116,7 @@
                                                 </div>
                                                 <div class="col-xs-6 col-md-3">
                                                     <div style="margin-top:15px;">
-                                                        <h4 class="box-title">报修类别:</h4>
+                                                        <h4 class="box-title">报修种类:</h4>
                                                         @if($repair->categories)
                                                             @foreach($repair->categories as $keyCa => $category)
                                                                 @if($keyCa%2 == 0 && $keyCa !=0) </br> @endif
