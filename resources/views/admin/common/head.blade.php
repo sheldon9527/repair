@@ -30,9 +30,6 @@
 
     <!-- Datetimepicker -->
     <link rel="stylesheet" href="/bower/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
-
-    <!-- Dropzone ***-->
-    <link href='/bower/dropzone/dist/min/dropzone.min.css' rel="stylesheet" />
     <link href='/bower/dropzone/dist/min/basic.min.css' rel="stylesheet" />
 
     {{-- rich text --}}
@@ -44,18 +41,9 @@
 
     <link href='/css/admin.css' rel="stylesheet" />
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="/bower/html5shiv/dist/html5shiv.min.js"></script>
-    <script src="/bower/respond/dest/respond.min.js"></script>
-    <![endif]-->
 
     {{-- requrejs --}}
 
     <script src="/bower/requirejs/require.js"></script>
     <script src="/js/admin.js"></script>
-	<!-- <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script> -->
-	<!-- <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
-<!-- <script src="http://api.map.baidu.com/api?v=2.0&ak=2d12993ce41407db4050140fe342d9ba" type="text/javascript"></script> -->
 </head>
