@@ -17,7 +17,6 @@
     "tmd/auto-git-pull": "^1.1",
     "maatwebsite/excel": "~2.0.0",
     "doctrine/dbal": "^2.5",
-    "intervention/image": "^2.3",
     "nesbot/carbon": "^1.20",
     "potsky/laravel-localization-helpers": "^1.3",
     "predis/predis": "^1.0",
@@ -25,10 +24,9 @@
     "tymon/jwt-auth": "0.5.*",
     "lokielse/laravel-pinyin": "^1.1",
     "lucadegasperi/oauth2-server-laravel": "5.0.*",
-	"lokielse/omnipay-alipay": "dev-master",
-	"ignited/laravel-omnipay": "2.*",
     "guzzlehttp/oauth-subscriber": "^0.3.0",
-	"zizaco/entrust": "5.2.x-dev"
+	"zizaco/entrust": "5.2.x-dev",
+	"rinvex/repository": "^2.0"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",

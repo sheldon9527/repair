@@ -1,10 +1,12 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Category;
-use App\Models\Repair;
-use App\Models\Dorm;
+use App\Repositories\Eloquents\RepairEloquentRepository;
+use App\Repositories\Eloquents\DormEloquentRepository;
+use App\Http\Requests\Admin\Repair\IndexRequest;
+use App\Http\Requests\Admin\Repair\MultiDestoryRequest;
+use App\Http\Requests\Admin\Repair\MultiUpdateRequest;
+use App\Http\Requests\Admin\Repair\StatusUpdateRequest;
 
 class RepairAddressController extends BaseController
 {
@@ -12,28 +14,28 @@ class RepairAddressController extends BaseController
      * [index 列表]
      * @return [type] [description]
      */
-    public function index()
+    public function index(RepairEloquentRepository $repairRepository, DormEloquentRepository $dormRepository, IndexRequest $request)
     {
-        $repairs     = Repair::query();
-        if ($home_number = $this->request->get('home_number')) {
-            $repairs->where('home_number', $home_number);
+        $repairRepositories = $repairRepository;
+        if ($home_number = $request->get('home_number')) {
+            $repairRepositories->where('home_number', $home_number);
         }
-        if ($dorm_id = $this->request->get('dorm_id')) {
-            $repairs->where('dorm_id', $dorm_id);
+        if ($dorm_id = $request->get('dorm_id')) {
+            $repairRepositories->where('dorm_id', $dorm_id);
         }
-        if ($status = $this->request->get('status')) {
-            $repairs->where('status', $status);
+        if ($status = $request->get('status')) {
+            $repairRepositories->where('status', $status);
         }
-        if ($name = $this->request->get('name')) {
-            $repairs->where('name', 'like', '%' . $name . '%');
+        if ($name = $request->get('name')) {
+            $repairRepositories->where('name', 'like', '%' . $name . '%');
         }
-        if ($startTime = $this->request->get('start_time')) {
-            $repairs->where('created_at', '>=', $startTime);
+        if ($startTime = $request->get('start_time')) {
+            $repairRepositories->where('created_at', '>=', $startTime);
         }
-        if ($endTimte = $this->request->get('end_time')) {
-            $repairs->where('created_at', '<=', $endTimte);
+        if ($endTimte = $request->get('end_time')) {
+            $repairRepositories->where('created_at', '<=', $endTimte);
         }
-        $repairs     = $repairs->orderBy('id', 'desc')->paginate(10);
+        $repairs     = $repairRepositories->orderBy('id', 'desc')->paginate(10);
         $searchColumns = [
             'home_number'   => $home_number,
             'dorm_id'       => $dorm_id,
@@ -42,7 +44,7 @@ class RepairAddressController extends BaseController
             'endTimte'      => $endTimte,
             'name'          => $name,
         ];
-        $rootDroms = Dorm::where('parent_id', 0)->with('children')->get();
+        $rootDroms = $dormRepository->where('parent_id', 0)->with(['children'])->findAll();
 
         return view('admin.repairs.index', compact('repairs', 'searchColumns', 'rootDroms'));
     }
@@ -51,9 +53,9 @@ class RepairAddressController extends BaseController
      * @param  [type] $id [description]
      * @return [type]     [description]
      */
-    public function show($id)
+    public function show($id, RepairEloquentRepository $repairRepository)
     {
-        $repair = Repair::withTrashed()->find($id);
+        $repair = $repairRepository->withTrashed()->find($id);
         if (!$repair) {
             abort(404);
         }
@@ -65,9 +67,9 @@ class RepairAddressController extends BaseController
      * @param  [type] $id [description]
      * @return [type]     [description]
      */
-    public function destory($id)
+    public function destory($id, RepairEloquentRepository $repairRepository)
     {
-        $repair = Repair::withTrashed()->find($id);
+        $repair = $repairRepository->withTrashed()->find($id);
         if (!$repair) {
             abort(404);
         }
@@ -79,20 +81,13 @@ class RepairAddressController extends BaseController
      * [multiDestory 批量删除]
      * @return [type] [description]
      */
-    public function multiDestory()
+    public function multiDestory(RepairEloquentRepository $repairRepository, MultiDestoryRequest $request)
     {
-        $repairIds = $this->request->get('repairIds');
-        $type      = $this->request->get('type');
-        if (!$repairIds) {
-            abort(404);
-        }
+        $repairIds = $request->get('repairIds');
+        $type      = $request->get('type');
         $repairIdsArray = explode(',', $repairIds);
-        if (empty($repairIdsArray)) {
-            abort(404);
-        }
-
         foreach ($repairIdsArray as $repairId) {
-            $repair = Repair::withTrashed()->find($repairId);
+            $repair = $repairRepository->withTrashed()->find($repairId);
             if (!$repair) {
                 continue;
             }
@@ -104,25 +99,18 @@ class RepairAddressController extends BaseController
         }
 
         return redirect(route('admin.repairs.index'))->with('delete', 'Delete Success!');
-        ;
     }
     /**
      * [multiUpdate 批量审批]
      * @return [type] [description]
      */
-    public function multiUpdate()
+    public function multiUpdate(RepairEloquentRepository $repairRepository, MultiUpdateRequest $request)
     {
-        $repairIds = $this->request->get('repairIds');
-        $type            = $this->request->get('type');
-        if (!$repairIds) {
-            abort(404);
-        }
+        $repairIds = $request->get('repairIds');
+        $type      = $request->get('type');
         $repairIdsArray = explode(',', $repairIds);
-        if (empty($repairIdsArray)) {
-            abort(404);
-        }
         foreach ($repairIdsArray as $repairId) {
-            $repair = Repair::find($repairId);
+            $repair = $repairRepository->find($repairId);
             if (!$repair) {
                 continue;
             }
@@ -138,23 +126,16 @@ class RepairAddressController extends BaseController
         }
 
         return redirect(route('admin.repairs.index'))->with('update', 'Update Success!');
-        ;
     }
     /**
      * [statusUpdate 修改状态]
      * @param  [type] $id [description]
      * @return [type]     [description]
      */
-    public function statusUpdate($id)
+    public function statusUpdate($id, RepairEloquentRepository $repairRepository, StatusUpdateRequest $request)
     {
-        $status = $this->request->get('status');
-        if (!$status) {
-            abort(404);
-        }
-        if (!in_array($status, ['PEND','PENDING','ACTIVE','INACTIVE','FINISH'])) {
-            abort(404);
-        }
-        $repair = Repair::withTrashed()->find($id);
+        $status = $request->get('status');
+        $repair = $repairRepository->withTrashed()->find($id);
         if (!$repair) {
             abort(404);
         }

@@ -152,8 +152,6 @@ return [
         Baum\Providers\BaumServiceProvider::class,
         //excel
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        // 图片库
-        Intervention\Image\ImageServiceProvider::class,
         //localization helper
         Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProviderLaravel5::class,
         //api
@@ -167,14 +165,16 @@ return [
         LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider::class,
         // 运营端后台
         App\Providers\AdminServiceProvider::class,
-        // laravel omnipay
-        Ignited\LaravelOmnipay\LaravelOmnipayServiceProvider::class,
         // authorize
         App\Providers\AuthServiceProvider::class,
         //Entrust
         Zizaco\Entrust\EntrustServiceProvider::class,
         // view composer
         App\Providers\ComposerServiceProvider::class,
+        //Repository
+        Rinvex\Repository\Providers\RepositoryServiceProvider::class,
+        //Repository,Providers
+        App\Providers\RepositoryServiceProvider::class,
     ],
 
     /*
@@ -224,17 +224,13 @@ return [
         'Socialize'  => Laravel\Socialite\Facades\Socialite::class,
         //excel
         'Excel'      => Maatwebsite\Excel\Facades\Excel::class,
-        // 图片库
-        'Image'      => Intervention\Image\Facades\Image::class,
         // 调试
         'Debugbar'   => Barryvdh\Debugbar\Facade::class,
-
+        //pinyin
         'Pinyin'     => Lokielse\LaravelPinyin\Facades\LaravelPinyinFacade::class,
-
+        //auth
         'Authorizer' => LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
         'JWTAuth'    => Tymon\JWTAuth\Facades\JWTAuth::class,
-        // omnipay
-        'Omnipay'    => Ignited\LaravelOmnipay\Facades\OmnipayFacade::class,
         //wechat
         'Wechat'     => Overtrue\LaravelWechat\Facade::class,
         //Entrust

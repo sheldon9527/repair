@@ -4,6 +4,7 @@
         <div class="box-header">
             <h3 class="box-title">维修列表</h3>
         </div>
+		@inject('repairPresenter','App\Presenters\RepairPresenter');
         <div class="box-body">
             <div class="row">
                 <div class="col-sm-12">
@@ -134,25 +135,14 @@
                                                 </div>
                                                 <div class="col-xs-6 col-md-2">
                                                     <div style="margin-top:10px;">
-                                                        @if($repair->status == 'FINISH')
-                                                            <span class="badge bg-green">状态:维修完</span>
-                                                        @endif
-                                                        @if($repair->status == 'PENDING')
-                                                            <span class="badge bg-red">状态:维修中</span>
-                                                        @endif
-                                                        @if($repair->status == 'PEND')
-                                                            <span class="badge bg-yellow">状态:未维修</span>
-                                                        @endif
+                                                        {!! $repairPresenter->repairStatus($repair) !!}
                                                     </div>
                                                     <div style="margin-top:10px;">
-                                                        @if($repair->status == 'PEND')
-                                                            <a href="{{route('admin.repairs.status.update',$repair->id)}}?status=PENDING"  class="badge bg-aqua">去维修</a>
-                                                        @endif
-                                                        @if($repair->status == 'PENDING')
-                                                        <a href="{{route('admin.repairs.status.update',$repair->id)}}?status=FINISH"  class="badge bg-aqua">完成</a>
-                                                        @endif
                                                         @if($repair->status == 'FINISH')
-                                                            <span class="badge">已完成</span>
+                                                           <span class="badge">已完成</span>
+                                                        @else
+                                                            <a href="{{route('admin.repairs.status.update',$repair->id)}}?status={{$repairPresenter->repairOperate($repair)['status']}}"  class="badge bg-aqua">{{$repairPresenter->repairOperate($repair)['name']}}
+                                                            </a>
                                                         @endif
                                                      </div>
                                                      <div style="margin-top:10px;">
