@@ -26,7 +26,17 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\Contracts\RepairRepositoryContract::class,
             \App\Repositories\Eloquents\RepairEloquentRepository::class,
             \App\Repositories\Contracts\DormRepositoryContract::class,
-            \App\Repositories\Eloquents\DormEloquentRepository::class
+            \App\Repositories\Eloquents\DormEloquentRepository::class,
+            \App\Repositories\Contracts\AdminRepositoryContract::class,
+            \App\Repositories\Eloquents\AdminEloquentRepository::class,
+            \App\Repositories\Contracts\RoleRepositoryContract::class,
+            \App\Repositories\Eloquents\RoleEloquentRepository::class,
+            \App\Repositories\Contracts\PermissionRepositoryContract::class,
+            \App\Repositories\Eloquents\PermissionEloquentRepository::class,
+            \App\Repositories\Contracts\AttachmentRepositoryContract::class,
+            \App\Repositories\Eloquents\AttachmentEloquentRepository::class,
+            \App\Repositories\Contracts\CategoryRepositoryContract::class,
+            \App\Repositories\Eloquents\CategoryEloquentRepository::class
         );
     }
 }

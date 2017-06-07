@@ -8,7 +8,7 @@ use App\Http\Requests\Admin\Repair\MultiDestoryRequest;
 use App\Http\Requests\Admin\Repair\MultiUpdateRequest;
 use App\Http\Requests\Admin\Repair\StatusUpdateRequest;
 
-class RepairAddressController extends BaseController
+class RepairController extends BaseController
 {
     /**
      * [index 列表]
@@ -55,7 +55,7 @@ class RepairAddressController extends BaseController
      */
     public function show($id, RepairEloquentRepository $repairRepository)
     {
-        $repair = $repairRepository->withTrashed()->find($id);
+        $repair = $repairRepository->find($id);
         if (!$repair) {
             abort(404);
         }
@@ -69,7 +69,7 @@ class RepairAddressController extends BaseController
      */
     public function destory($id, RepairEloquentRepository $repairRepository)
     {
-        $repair = $repairRepository->withTrashed()->find($id);
+        $repair = $repairRepository->find($id);
         if (!$repair) {
             abort(404);
         }
@@ -87,7 +87,7 @@ class RepairAddressController extends BaseController
         $type      = $request->get('type');
         $repairIdsArray = explode(',', $repairIds);
         foreach ($repairIdsArray as $repairId) {
-            $repair = $repairRepository->withTrashed()->find($repairId);
+            $repair = $repairRepository->find($repairId);
             if (!$repair) {
                 continue;
             }
@@ -135,7 +135,7 @@ class RepairAddressController extends BaseController
     public function statusUpdate($id, RepairEloquentRepository $repairRepository, StatusUpdateRequest $request)
     {
         $status = $request->get('status');
-        $repair = $repairRepository->withTrashed()->find($id);
+        $repair = $repairRepository->find($id);
         if (!$repair) {
             abort(404);
         }

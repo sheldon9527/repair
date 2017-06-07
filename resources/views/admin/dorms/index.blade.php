@@ -49,7 +49,7 @@
                                                 data-node-icon="{{$root->icon_url}}"
                                                 data-node-en-name="{{$root->en_name}}">修改</a></li>
 
-                                            <li><a href="{{route('admin.categories.destroy', $root->id)}}" data-method="delete" data-confirm="确定删除主分类吗，主分下面的子分类会一起被删除?">删除</a></li>
+                                            <li><a href="{{route('admin.dorms.destroy', $root->id)}}" data-method="delete" data-confirm="确定删除主分类吗，主分下面的子分类会一起被删除?">删除</a></li>
 
                                             <li><a class="add-category-child" data-toggle="modal" data-target="#addChildModal" data-root-name="{{$root->name}}" data-root-id="{{$root->id}}">添加二级分类</a></li>
                                         </ul>

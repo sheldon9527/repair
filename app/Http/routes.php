@@ -61,32 +61,32 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'manager'], function () {
          */
          Route::get('repairs', [
              'as' => 'admin.repairs.index',
-             'uses' => 'RepairAddressController@index',
+             'uses' => 'RepairController@index',
          ]);
          Route::get('repairs/{id}', [
              'as' => 'admin.repairs.show',
-             'uses' => 'RepairAddressController@show',
+             'uses' => 'RepairController@show',
          ]);
          Route::delete('repairs/{id}', [
              'as' => 'admin.repairs.destory',
-             'uses' => 'RepairAddressController@destory',
+             'uses' => 'RepairController@destory',
          ]);
          Route::put('repairs/{id}', [
              'as' => 'admin.repairs.update',
-             'uses' => 'RepairAddressController@update',
+             'uses' => 'RepairController@update',
          ]);
          Route::get('repairs/multiDestory', [
              'as' => 'admin.repairs.multiDestory',
-             'uses' => 'RepairAddressController@multiDestory',
+             'uses' => 'RepairController@multiDestory',
          ]);
          Route::get('repairs/multiUpdate', [
              'as' => 'admin.repairs.multiUpdate',
-             'uses' => 'RepairAddressController@multiUpdate',
+             'uses' => 'RepairController@multiUpdate',
          ]);
 
         Route::get('repairs/{id}/status', [
           'as' => 'admin.repairs.status.update',
-          'uses' => 'RepairAddressController@statusUpdate',
+          'uses' => 'RepairController@statusUpdate',
         ]);
 
         /**

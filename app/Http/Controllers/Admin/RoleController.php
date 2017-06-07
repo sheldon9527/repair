@@ -1,65 +1,85 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Role;
-use App\Models\Permission;
 use App\Http\Requests\Admin\Role\StoreRequest;
+use App\Http\Requests\Admin\Role\UpdatePermissionRequest;
+use App\Repositories\Eloquents\RoleEloquentRepository;
+use App\Repositories\Eloquents\PermissionEloquentRepository;
 
 class RoleController extends BaseController
 {
-    public function index()
+    /**
+     * [index 角色列表]
+     * @param  RoleEloquentRepository $roleRepository [description]
+     * @return [type]                                 [description]
+     */
+    public function index(RoleEloquentRepository $roleRepository)
     {
-        $roles = Role::all();
+        $roles = $roleRepository->findAll();
+
         return view('admin.company.role.index', compact('roles'));
     }
-
-    public function store(StoreRequest $request)
+    /**
+     * [store 保存角色]
+     * @param  StoreRequest           $request        [description]
+     * @param  RoleEloquentRepository $roleRepository [description]
+     * @return [type]                                 [description]
+     */
+    public function store(StoreRequest $request, RoleEloquentRepository $roleRepository)
     {
-        $role = new Role();
-        $role->name = $role->display_name =  $request->get('name');
-        $role->description = $request->get('description');
-        $role->save();
+        $createdEntity = $roleRepository->create([
+            'name'          => $request->get('name'),
+            'description'   => $request->get('description')
+        ]);
 
         return redirect(route('admin.roles.index'));
     }
-
-    public function udpate()
+    /**
+     * [destroy 删除角色]
+     * @param  [type]                 $id             [description]
+     * @param  RoleEloquentRepository $roleRepository [description]
+     * @return [type]                                 [description]
+     */
+    public function destroy($id, RoleEloquentRepository $roleRepository)
     {
-    }
-
-    public function destroy($id)
-    {
-        $role = Role::find($id);
+        $role = $roleRepository->find($id);
         if (!$role) {
             abort(404);
         }
-
         $role->delete();
 
         return redirect(route('admin.roles.index'));
     }
-
-    public function permissionEdit($id)
+    /**
+     * [permissionEdit 编辑权限]
+     * @param  [type]                       $id                   [description]
+     * @param  RoleEloquentRepository       $roleRepository       [description]
+     * @param  PermissionEloquentRepository $permissionRepository [description]
+     * @return [type]                                             [description]
+     */
+    public function permissionEdit($id, RoleEloquentRepository $roleRepository, PermissionEloquentRepository $permissionRepository)
     {
-        $role = Role::find($id);
+        $role = $roleRepository->find($id);
         if (!$role) {
             abort(404);
         }
-
-        $permissions = Permission::all();
+        $permissions = $permissionRepository->findAll();
 
         return view('admin.company.role.permissionIndex', compact('permissions', 'role'));
     }
-
-    public function permissionUpdate($id)
+    /**
+     * [permissionUpdate 更新权限]
+     * @param  [type]                 $id             [description]
+     * @param  RoleEloquentRepository $roleRepository [description]
+     * @return [type]                                 [description]
+     */
+    public function permissionUpdate($id, UpdatePermissionRequest $request, RoleEloquentRepository $roleRepository)
     {
-        $role = Role::find($id);
+        $role = $roleRepository->find($id);
         if (!$role) {
             abort(404);
         }
-
-        $permissionIds = $this->request->get('permission_ids');
+        $permissionIds = $request->get('permission_ids');
         $role->perms()->detach();
         $role->attachPermissions($permissionIds);
 
