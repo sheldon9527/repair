@@ -54,6 +54,9 @@
                                 <a href="{{route('admin.repairs.index')}}" >
                                     <button class="btn btn-info"  style="margin-right:60px;" type="submit">返回</button>
                                 </a>
+								<a href="{{route('admin.repairs.edit',$repair->id)}}" >
+									<button class="btn btn-info"  style="margin-right:60px;" type="submit">编辑</button>
+								</a>
                             </td>
                         </tr>
                         </tbody>
