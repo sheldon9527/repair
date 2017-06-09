@@ -10,7 +10,7 @@ class RepairPresenter
             $content['name'] = '去维修';
             $content['status']  = 'PENDING';
         } elseif ($repair->status == 'PENDING') {
-            $content['name'] = '完成';
+            $content['name'] = '去完成';
             $content['status']  = 'FINISH';
         }
 
