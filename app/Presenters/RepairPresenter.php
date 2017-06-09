@@ -31,4 +31,28 @@ class RepairPresenter
 
         return $content;
     }
+
+    public function repairSelectStatus($repair)
+    {
+        $content = '';
+        switch ($repair->status) {
+            case 'FINISH':
+                $content .='<option value="PENDING" >未维修</option>';
+                $content .='<option value="FINISH" selected="selected">维修完</option>';
+                $content .='<option value="PEND">维修中</option>';
+                break;
+            case 'PENDING':
+                $content .='<option value="PENDING" selected="selected">维修中</option>';
+                $content .='<option value="FINISH">维修完</option>';
+                $content .='<option value="PEND">未维修</option>';
+                break;
+            case 'PEND':
+                $content .='<option value="PENDING">维修中</option>';
+                $content .='<option value="FINISH">维修完</option>';
+                $content .='<option value="PEND" selected="selected">未维修</option>';
+                break;
+        }
+
+        return $content;
+    }
 }

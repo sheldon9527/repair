@@ -3,10 +3,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Repositories\Eloquents\RepairEloquentRepository;
 use App\Repositories\Eloquents\DormEloquentRepository;
+use App\Repositories\Eloquents\CategoryEloquentRepository;
 use App\Http\Requests\Admin\Repair\IndexRequest;
 use App\Http\Requests\Admin\Repair\MultiDestoryRequest;
 use App\Http\Requests\Admin\Repair\MultiUpdateRequest;
 use App\Http\Requests\Admin\Repair\StatusUpdateRequest;
+use App\Http\Requests\Admin\Repair\UpdateRequest;
 
 class RepairController extends BaseController
 {
@@ -49,9 +51,10 @@ class RepairController extends BaseController
         return view('admin.repairs.index', compact('repairs', 'searchColumns', 'rootDroms'));
     }
     /**
-     * [show 目的地详情]
-     * @param  [type] $id [description]
-     * @return [type]     [description]
+     * [show 详情]
+     * @param  [type]                   $id               [description]
+     * @param  RepairEloquentRepository $repairRepository [description]
+     * @return [type]                                     [description]
      */
     public function show($id, RepairEloquentRepository $repairRepository)
     {
@@ -61,6 +64,44 @@ class RepairController extends BaseController
         }
 
         return view('admin.repairs.show', compact('repair'));
+    }
+    /**
+     * [edit 编辑页面]
+     * @param  [type]                     $id                 [description]
+     * @param  RepairEloquentRepository   $repairRepository   [description]
+     * @param  DormEloquentRepository     $dormRepository     [description]
+     * @param  CategoryEloquentRepository $categoryRepository [description]
+     * @return [type]                                         [description]
+     */
+    public function edit($id, RepairEloquentRepository $repairRepository, DormEloquentRepository $dormRepository, CategoryEloquentRepository $categoryRepository)
+    {
+        $repair = $repairRepository->find($id);
+        if (!$repair) {
+            abort(404);
+        }
+        $categories = $categoryRepository->where('parent_id', 0)->with(['children'])->findAll();
+        $dorms = $dormRepository->where('parent_id', 0)->with(['children'])->findAll();
+        $userDrom = [$repair->dorm->id];
+        $ownerCategoryIds =  $repair->categories->lists('id')->all();
+        // dd($userCategories);
+
+        return view('admin.repairs.edit', compact('repair', 'categories', 'dorms', 'userDrom', 'ownerCategoryIds'));
+    }
+    public function update($id, UpdateRequest $request, RepairEloquentRepository $repairRepository)
+    {
+        $updatedEntity = $repairRepository->update($id, [
+            'dorm_id'     => $request->get('dorm_id'),
+            'home_number' => $request->get('home_number'),
+            'status'      => $request->get('status'),
+            'description' => $request->get('description'),
+        ]);
+        list($status, $repair) = $updatedEntity;
+        $repair->categories()->detach();
+        if ($categoryIds = $request->get('category_ids')) {
+            $repair->categories()->attach($categoryIds);
+        }
+
+        return redirect(route('admin.repairs.show', $id));
     }
     /**
      * [destory 删除]

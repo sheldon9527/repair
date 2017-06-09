@@ -146,10 +146,13 @@
                                                         @endif
                                                      </div>
                                                      <div style="margin-top:10px;">
+                                                        <a href="{{route('admin.repairs.edit',$repair->id)}}" class="badge bg-yellow" id='link'>编辑</a>
+                                                     </div>
+                                                     <div style="margin-top:10px;">
                                                         <a href="{{route('admin.repairs.show',$repair->id)}}" class="badge bg-aqua" id='link'>详情</a>
                                                      </div>
                                                      <div style="margin-top:10px;">
-                                                        <a href="{{route('admin.repairs.destory',$repair->id)}}" data-method='delete' data-confirm="你确定要删除吗？"  class="badge bg-aqua" id='link'>删除</a>
+                                                        <a href="{{route('admin.repairs.destory',$repair->id)}}" data-method='delete' data-confirm="你确定要删除吗？"  class="badge bg-red" id='link'>删除</a>
                                                      </div>
                                                 </div>
                                             </div>

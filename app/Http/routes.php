@@ -71,6 +71,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'manager'], function () {
              'as' => 'admin.repairs.destory',
              'uses' => 'RepairController@destory',
          ]);
+         Route::get('repairs/{id}/edit', [
+             'as' => 'admin.repairs.edit',
+             'uses' => 'RepairController@edit',
+         ]);
          Route::put('repairs/{id}', [
              'as' => 'admin.repairs.update',
              'uses' => 'RepairController@update',
