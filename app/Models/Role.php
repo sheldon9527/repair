@@ -9,5 +9,6 @@ class Role extends EntrustRole
     protected $fillable = [
         'description',
         'name',
+        'display_name',
     ];
 }

@@ -29,6 +29,7 @@ class RoleController extends BaseController
     {
         $createdEntity = $roleRepository->create([
             'name'          => $request->get('name'),
+            'display_name'  => $request->get('name'),
             'description'   => $request->get('description')
         ]);
 
