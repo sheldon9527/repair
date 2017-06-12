@@ -61,7 +61,7 @@
                                     <td>用户id</td>
                                     <td>登陆账号</td>
                                     <td>联系电话</td>
-                                    <td>邮箱</td>
+                                    <!-- <td>邮箱</td> -->
                                     <td>角色</td>
                                     <td>超级管理员</td>
                                     <td>状态</td>
@@ -76,7 +76,7 @@
                                     </td>
                                     <td>{{$admin->username}}</td>
                                     <td>{{$admin->cellphone}}</td>
-                                    <td>{{$admin->email}}</td>
+                                    <!-- <td>{{$admin->email}}</td> -->
                                     <td>
                                         @foreach($admin->roles as $role)
                                             <span class="badge badge-info">{{$role->display_name}}</span>
