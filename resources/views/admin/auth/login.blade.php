@@ -6,11 +6,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
     <head>
         <meta charset="UTF-8">
-<<<<<<< HEAD
         <title>@yield('title', '北信校园故障报修系统 ADMIN')</title>
-=======
-        <title>@yield('title', '北信校园 ADMIN')</title>
->>>>>>> dd28dc962b6e9993d8802d9812672ce132484fa2
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
         <link href="/bower/AdminLTE/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>

@@ -14,14 +14,14 @@ Route::pattern('id', '[0-9]+');
 Route::pattern('oid', '[0-9]+');
 Route::pattern('alpha', '[A-Za-z]+');
 $api = app('api.router');
-Route::get('/', [
-    'as' => 'inquiry.get',
-    'uses' => 'Front\HomeController@home',
-]);
-Route::post('/', [
-    'as' => 'inquiry.post',
-    'uses' => 'Front\HomeController@store',
-]);
+// Route::get('/', [
+//     'as' => 'inquiry.get',
+//     'uses' => 'Front\HomeController@home',
+// ]);
+// Route::post('/', [
+//     'as' => 'inquiry.post',
+//     'uses' => 'Front\HomeController@store',
+// ]);
 /*
  * 运营后台
  */
@@ -59,31 +59,31 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'manager'], function () {
         /**
          * 维修管理
          */
-         Route::get('repairs', [
+        Route::get('repairs', [
              'as' => 'admin.repairs.index',
              'uses' => 'RepairController@index',
          ]);
-         Route::get('repairs/{id}', [
+        Route::get('repairs/{id}', [
              'as' => 'admin.repairs.show',
              'uses' => 'RepairController@show',
          ]);
-         Route::delete('repairs/{id}', [
+        Route::delete('repairs/{id}', [
              'as' => 'admin.repairs.destory',
              'uses' => 'RepairController@destory',
          ]);
-         Route::get('repairs/{id}/edit', [
+        Route::get('repairs/{id}/edit', [
              'as' => 'admin.repairs.edit',
              'uses' => 'RepairController@edit',
          ]);
-         Route::put('repairs/{id}', [
+        Route::put('repairs/{id}', [
              'as' => 'admin.repairs.update',
              'uses' => 'RepairController@update',
          ]);
-         Route::get('repairs/multiDestory', [
+        Route::get('repairs/multiDestory', [
              'as' => 'admin.repairs.multiDestory',
              'uses' => 'RepairController@multiDestory',
          ]);
-         Route::get('repairs/multiUpdate', [
+        Route::get('repairs/multiUpdate', [
              'as' => 'admin.repairs.multiUpdate',
              'uses' => 'RepairController@multiUpdate',
          ]);
