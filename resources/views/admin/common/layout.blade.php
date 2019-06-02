@@ -19,7 +19,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                @yield('title', '西安思源学院 Admin')
+                @yield('title', '北信校园 Admin')
                 <small>@yield('page_description', null)</small>
             </h1>
             <!-- You can dynamically generate breadcrumbs here -->

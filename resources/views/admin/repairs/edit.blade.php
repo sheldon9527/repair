@@ -31,7 +31,7 @@
 							</select>
 						</div>
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label class="col-md-2"><span class="text-red">*</span>宿舍楼号</label>
 						<div class="col-md-8">
 							@include('admin.common.dorms')
@@ -42,7 +42,7 @@
 						<div class="col-md-6">
 							<input type="number" name="home_number" value="{{$repair->home_number}}" class="form-control" required>
 						</div>
-					</div>
+					</div> -->
 					<div class="form-group">
 						<label class="col-md-2"><span class="text-red">*</span>报修种类</label>
 						<div class="col-md-8">

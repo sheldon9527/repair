@@ -31,7 +31,7 @@
                                   <div class="form-group">
                                      <a class="btn btn-info" id='finish'>完成选中</a>
                                  </div>
-                                  <div class="form-group">
+                                  <!-- <div class="form-group">
                                     <label><h4>宿舍楼号</h4></label>
                                       <select name="dorm_id" id="status" class="form-control">
                                           <option value="">全部</option>
@@ -43,7 +43,7 @@
                                               @endforeach
                                           @endforeach
                                       </select>
-                                  </div>
+                                  </div> -->
                                   <div class="form-group">
                                       <label><h4>报修种类</h4></label>
                                       <select name="status" id="status" class="form-control">
@@ -104,12 +104,12 @@
                                                     <div style="margin-top:15px;">
                                                         <h4 class="box-title">联系方式:{{$repair->phone}}</h4>
                                                     </div>
-                                                    <div style="margin-top:15px;">
+                                                    <!-- <div style="margin-top:15px;">
                                                         <h4 class="box-title">宿舍楼号:{{$repair->dorm->parent->name}}[{{$repair->dorm->name}}]</h4>
-                                                    </div>
-                                                    <div style="margin-top:15px;">
+                                                    </div> -->
+                                                    <!-- <div style="margin-top:15px;">
                                                         <h4 class="box-title">宿舍房号:{{$repair->home_number}}</h4>
-                                                    </div>
+                                                    </div> -->
                                                     <div style="margin-top:15px;">
                                                         <h4 class="box-title">创建时间:{{$repair->created_at}}</h4>
                                                     </div>

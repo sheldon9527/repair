@@ -6,7 +6,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>@yield('title', '西安思源学院 ADMIN')</title>
+        <title>@yield('title', '北信校园 ADMIN')</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
         <link href="/bower/AdminLTE/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -25,7 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <body class="hold-transition login-page">
         <div class="login-box">
             <div class="login-logo">
-                <a href="../../index2.html"><b>西安思源学院</b> - ADMIN</a>
+                <a href="../../index2.html"><b>北信校园</b> - ADMIN</a>
             </div>
             <!-- /.login-logo -->
             <div class="login-box-body">

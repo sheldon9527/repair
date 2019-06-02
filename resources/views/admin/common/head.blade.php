@@ -1,6 +1,6 @@
 <head>
     <meta charset="UTF-8">
-    <title>@yield('title', '西安思源学院 Admin')</title>
+    <title>@yield('title', '北信校园 Admin')</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Bootstrap 3.3.2 -->

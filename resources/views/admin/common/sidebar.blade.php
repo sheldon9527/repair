@@ -32,11 +32,11 @@
 				</li>
 				@endif
 			   @if ($admin->isSuper || $admin->can('dorms.manage'))
-			   <li class="{{\Route::is('admin.dorms.*') ? 'active' : ''}}">
+			   <!-- <li class="{{\Route::is('admin.dorms.*') ? 'active' : ''}}">
 				   <a href="{{route('admin.dorms.index')}}">
 					   <i class="fa fa-university"></i><span>宿舍楼管理</span>
 				   </a>
-			   </li>
+			   </li> -->
 			   @endif
 			    @if ($admin->isSuper || $admin->can('categories.manage'))
 			   <li class="{{\Route::is('admin.categories.*') ? 'active' : ''}}">

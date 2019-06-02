@@ -24,12 +24,12 @@
 							<tr>
 								<td style="font-size:16px;"><strong>联系方式:</strong><B>{{$repair->phone}}</B></td>
 							</tr>
-							<tr>
+							<!-- <tr>
 								<td style="font-size:16px;"><strong>宿舍楼号:</strong>{{$repair->build_number}}</td>
 							</tr>
 							<tr>
 								<td style="font-size:16px;"><strong>宿舍房号:</strong>{{$repair->home_number}}</td>
-							</tr>
+							</tr> -->
 							<tr>
 								<td style="font-size:16px;"><strong>创建时间:</strong>{{$repair->created_at}}</td>
 							</tr>
