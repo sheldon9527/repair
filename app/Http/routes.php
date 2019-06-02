@@ -94,6 +94,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'manager'], function () {
         ]);
 
         /**
+         * users
+         */
+        Route::get('users', [
+            'as' => 'admin.users.index',
+            'uses' => 'UserController@index',
+        ]);
+
+        /**
          * admins
          */
         Route::get('admins', [

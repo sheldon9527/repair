@@ -43,6 +43,7 @@ class DashboardController extends BaseController
             ];
         }
 
+
         //未维修
         $noCount = $repairRepository->where('status', 'PEND')->count();
         $statisticData['no_address']['dayCount'] = json_encode($noApprovalData);

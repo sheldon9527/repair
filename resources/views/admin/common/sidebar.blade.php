@@ -16,12 +16,27 @@
                         <i class="fa fa-tachometer" aria-hidden="true"></i> <span>仪表盘</span>
                     </a>
                 </li>
+				@if ($admin->isSuper || $admin->can('users.manage'))
+				<li class="treeview {{
+						\Route::is('admin.users.*') ? 'active' : null
+					}}">
+					<a href="#">
+						<i class="fa fa-users"></i> <span>报修人管理</span>
+						<i class="fa fa-angle-left pull-right"></i>
+					</a>
+					<ul class="treeview-menu menu-open">
+						<li class="{{\Route::is('admin.users.*') ? 'active' : ''}}">
+							<a href="{{route('admin.users.index')}}"><i class="fa fa-circle-o"></i>维修人列表</a>
+						</li>
+					</ul>
+				</li>
+				@endif
 				@if ($admin->isSuper || $admin->can('repairs.manage'))
 				<li class="treeview {{
 						\Route::is('admin.repairs.*') ? 'active' : null
 					}}">
 					<a href="#">
-						<i class="fa fa-users"></i> <span>维修管理</span>
+						<i class="fa fa-th-list"></i> <span>维修管理</span>
 						<i class="fa fa-angle-left pull-right"></i>
 					</a>
 					<ul class="treeview-menu menu-open">
