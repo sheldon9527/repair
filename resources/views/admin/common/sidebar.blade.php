@@ -31,20 +31,6 @@
 					</ul>
 				</li>
 				@endif
-			   @if ($admin->isSuper || $admin->can('dorms.manage'))
-			   <li class="{{\Route::is('admin.dorms.*') ? 'active' : ''}}">
-				   <a href="{{route('admin.dorms.index')}}">
-					   <i class="fa fa-university"></i><span>宿舍楼管理</span>
-				   </a>
-			   </li>
-			   @endif
-			    @if ($admin->isSuper || $admin->can('categories.manage'))
-			   <li class="{{\Route::is('admin.categories.*') ? 'active' : ''}}">
-				   <a href="{{route('admin.categories.index')}}">
-					   <i class="fa fa-sitemap"></i><span>报修种类管理</span>
-				   </a>
-			   </li>
-			   @endif
 			   @if ($admin->isSuper || $admin->can('admins.manage'))
 			   <li class="{{\Route::is('admin.admins.*','admin.roles.*','admin.permissions.*') ? 'active' : ''}}">
 				  <a href="{{route('admin.admins.index')}}">

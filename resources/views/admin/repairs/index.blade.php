@@ -31,35 +31,20 @@
                                   <div class="form-group">
                                      <a class="btn btn-info" id='finish'>完成选中</a>
                                  </div>
-                                  <div class="form-group">
-                                    <label><h4>宿舍楼号</h4></label>
-                                      <select name="dorm_id" id="status" class="form-control">
-                                          <option value="">全部</option>
-                                          @foreach($rootDroms as $root)
-                                              <option disabled="disabled">{{$root->name}} </option>
-                                              @foreach($root->children as $children)
-                                              <option value="{{$children->id}}" @if($searchColumns['dorm_id'] == $children->id) selected = "selected" @endif>&nbsp;&nbsp;&nbsp;&nbsp;--|{{$children->name}}
-                                              </option>
-                                              @endforeach
-                                          @endforeach
-                                      </select>
-                                  </div>
-                                  <div class="form-group">
-                                      <label><h4>报修种类</h4></label>
-                                      <select name="status" id="status" class="form-control">
-                                          <option value="">全部</option>
-                                          <option value="PEND" @if($searchColumns['status'] =='PEND') selected = "selected" @endif>未维修</option>
-                                          <option value="PENDING" @if($searchColumns['status'] =='PENDING') selected = "selected" @endif>维修中</option>
-                                           <option value="FINISH" @if($searchColumns['status'] =='FINISH') selected = "selected" @endif>维修完</option>
-                                      </select>
-                                  </div>
-                                  <div class="form-group">
-                                       <label><h4>宿舍房号</h4></label>
-                                      <input type="number"  class="form-control" name="home_number" placeholder="336" value="{{$searchColumns['home_number']}}">
-                                  </div></br></br>
+
                                   <div>
+								  </br>
+                                    <div class="form-group">
+                                        <label><h4>报修状态</h4></label>
+                                        <select name="status" id="status" class="form-control">
+                                            <option value="">全部</option>
+                                            <option value="PEND" @if($searchColumns['status'] =='PEND') selected = "selected" @endif>未维修</option>
+                                            <option value="PENDING" @if($searchColumns['status'] =='PENDING') selected = "selected" @endif>维修中</option>
+                                             <option value="FINISH" @if($searchColumns['status'] =='FINISH') selected = "selected" @endif>维修完</option>
+                                        </select>
+                                    </div>
                                       <div class="form-group">
-                                         <label><h4>联系姓名</h4></label>
+                                         <label><h4>标题</h4></label>
                                         <input type="text"  class="form-control" name="name" placeholder="SheldonYi" value="{{$searchColumns['name']}}">
                                         </div>
                                       <div class="form-group">
@@ -97,42 +82,26 @@
                                         <td class="" align="center" valign="middle"><input style="margin-top:60px;" name="input" type="checkbox" value="{{$repair->id}}"></td>
                                         <td class="">
                                             <div class="row">
-                                                <div class="col-xs-6 col-md-3">
+                                                <div class="col-xs-6 col-md-2">
                                                     <div style="margin-top:15px;">
-                                                        <h4 class="box-title">联系姓名:{{$repair->name}}</h4>
-                                                    </div>
-                                                    <div style="margin-top:15px;">
-                                                        <h4 class="box-title">联系方式:{{$repair->phone}}</h4>
-                                                    </div>
-                                                    <div style="margin-top:15px;">
-                                                        <h4 class="box-title">宿舍楼号:{{$repair->dorm->parent->name}}[{{$repair->dorm->name}}]</h4>
-                                                    </div>
-                                                    <div style="margin-top:15px;">
-                                                        <h4 class="box-title">宿舍房号:{{$repair->home_number}}</h4>
-                                                    </div>
-                                                    <div style="margin-top:15px;">
-                                                        <h4 class="box-title">创建时间:{{$repair->created_at}}</h4>
+                                                        <h4 class="box-title">标题:</br></br></br>{{$repair->name}}</h4>
                                                     </div>
                                                 </div>
-                                                <div class="col-xs-6 col-md-3">
+                                                <div class="col-xs-6 col-md-6">
                                                     <div style="margin-top:15px;">
-                                                        <h4 class="box-title">报修种类:</h4>
-                                                        @if($repair->categories)
-                                                            @foreach($repair->categories as $keyCa => $category)
-                                                                @if($keyCa%2 == 0 && $keyCa !=0) </br> @endif
-                                                                <div class="col-xs-6 col-md-6">
-                                                                {{$category->parent->name}}
-                                                                <button class="btn btn-default btn-xs">{{$category->name}}</button>
-                                                                </div>
+                                                        <h4 class="box-title">报修详情:</h4></br>{{$repair->description}}
+														@if($repair->attachment)
+                                                            @foreach($repair->attachment as $image)
+                                                                <image style="width:100px;height:100px;" src="{{$image->relative_path}}"></image>
                                                             @endforeach
                                                         @endif
                                                     </div>
                                                 </div>
-                                                <div class="col-xs-6 col-md-4">
-                                                    <div style="margin-top:15px;">
-                                                        <h4 class="box-title">报修详情:</h4>{{$repair->description}}
-                                                    </div>
-                                                </div>
+												<div class="col-xs-6 col-md-2">
+													<div style="margin-top:15px;">
+														<h4 class="box-title">创建时间:</br></br></br>{{$repair->created_at}}</h4>
+													</div>
+												</div>
                                                 <div class="col-xs-6 col-md-2">
                                                     <div style="margin-top:10px;">
                                                         {!! $repairPresenter->repairStatus($repair) !!}

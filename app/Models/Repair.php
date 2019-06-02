@@ -25,6 +25,12 @@ class Repair extends BaseModel
         return $this->morphMany('App\Models\Attachment', 'attachable');
     }
 
+    // 服务
+    public function attachment()
+    {
+        return $this->hasMany('App\Models\Attachment');
+    }
+
     public function categories()
     {
         return $this->belongsToMany('App\Models\Category')->withTimestamps();
@@ -32,6 +38,6 @@ class Repair extends BaseModel
 
     public function dorm()
     {
-         return $this->hasOne('App\Models\Dorm', 'id', 'dorm_id');
+        return $this->hasOne('App\Models\Dorm', 'id', 'dorm_id');
     }
 }

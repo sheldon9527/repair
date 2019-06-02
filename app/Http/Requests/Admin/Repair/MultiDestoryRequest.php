@@ -8,8 +8,7 @@ class MultiDestoryRequest extends Request
     public function rules()
     {
         return [
-            'repairIds'        => 'required|string',
-            'type'             => 'required|string|in:delete',
+            
         ];
     }
 }

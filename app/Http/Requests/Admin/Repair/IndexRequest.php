@@ -8,8 +8,7 @@ class IndexRequest extends Request
     public function rules()
     {
         return [
-            'home_number'        => 'string',
-            'description' => 'string',
+            
         ];
     }
 }

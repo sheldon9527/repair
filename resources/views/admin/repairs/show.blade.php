@@ -19,35 +19,20 @@
 								</td>
 							</tr>
 	                        <tr>
-	                            <td style="font-size:16px;"><strong>联系姓名:</strong><B>{{$repair->name}}</B></td>
+	                            <td style="font-size:16px;"><strong>标题:</strong><B>{{$repair->name}}</B></td>
 	                        </tr>
-							<tr>
-								<td style="font-size:16px;"><strong>联系方式:</strong><B>{{$repair->phone}}</B></td>
-							</tr>
-							<tr>
-								<td style="font-size:16px;"><strong>宿舍楼号:</strong>{{$repair->build_number}}</td>
-							</tr>
-							<tr>
-								<td style="font-size:16px;"><strong>宿舍房号:</strong>{{$repair->home_number}}</td>
-							</tr>
 							<tr>
 								<td style="font-size:16px;"><strong>创建时间:</strong>{{$repair->created_at}}</td>
 							</tr>
-							<tr>
-								<td style="font-size:16px;"><strong>报修类别:</strong>
-									@if($repair->categories)
-										@foreach($repair->categories as $category)
-											<div>
-												{{$category->parent->name}}
-													<button class="btn btn-default btn-xs">{{$category->name}}</button>
-											</div>
-										@endforeach
-									@endif
-								</td>
-							</tr>
 	                        <tr>
 	                            <td style="font-size:16px;font-family:verdana;line-height:30px;"><strong>具体介绍:</strong></br>
-	                            {{$repair->description}}</td>
+	                            {{$repair->description}}
+								@if($repair->attachment)
+									@foreach($repair->attachment as $image)
+										<image style="width:100px;height:100px;" src="{{$image->relative_path}}"></image>
+									@endforeach
+								@endif
+							</td>
 	                        </tr>
                         <tr>
                             <td colspan="2">
