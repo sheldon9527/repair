@@ -84,10 +84,10 @@
 										<td>{{$repair->id}}</td>
 										<td>{{$repair->name}}</td>
 										<td>
-											{{$repair->description}}</br>
+											{{$repair->description}}</br>}</br>}</br>
 											@if($repair->attachment)
 												@foreach($repair->attachment as $image)
-													<image style="width:200px;height:100px;" src="{{$image->relative_path}}"></image>
+													<image style="width:200px;height:150px;" src="{{$image->relative_path}}"></image>
 												@endforeach
 											@endif
 										</td>
