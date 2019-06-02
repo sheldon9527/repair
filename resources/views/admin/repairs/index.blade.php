@@ -68,63 +68,57 @@
                         <table id="example2" class="table table-bordered table-hover dataTable" role="grid" >
                             <thead>
                                 <tr role="row">
-                                    <th class="sorting" style="text-align:center;width:6%" tabindex="0"  rowspan="1" colspan="1">
-                                        <input name="" type="checkbox">
-                                    </th>
-                                    <th class="sorting" style="text-align:center; font-size:20px" tabindex="0"  rowspan="1" colspan="1">
-                                        报修相关信息
-                                    </th>
+									<td><input name="" type="checkbox"></td>
+									<td>ID</td>
+									<td>标题</td>
+									<td>详情</td>
+									<td>状态</td>
+									<td>创建时间</td>
+									<td>操作</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($repairs as $key => $repair)
                                     <tr @if($key%2 == 0) style="background:#F0F8FF;" @endif role="row">
-                                        <td class="" align="center" valign="middle"><input style="margin-top:60px;" name="input" type="checkbox" value="{{$repair->id}}"></td>
+                                        <td><input name="input" type="checkbox" value="{{$repair->id}}"></td>
+										<td>{{$repair->id}}</td>
+										<td>{{$repair->name}}</td>
+										<td>
+											{{$repair->description}}
+											@if($repair->attachment)
+												@foreach($repair->attachment as $image)
+													<image style="width:100px;height:100px;" src="{{$image->relative_path}}"></image>
+												@endforeach
+											@endif
+										</td>
+										<td> {!! $repairPresenter->repairStatus($repair) !!}</td>
+										<td>{{$repair->created_at}}</td>
                                         <td class="">
-                                            <div class="row">
-                                                <div class="col-xs-6 col-md-2">
-                                                    <div style="margin-top:15px;">
-                                                        <h4 class="box-title">标题:</br></br></br>{{$repair->name}}</h4>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-md-6">
-                                                    <div style="margin-top:15px;">
-                                                        <h4 class="box-title">报修详情:</h4></br>{{$repair->description}}
-														@if($repair->attachment)
-                                                            @foreach($repair->attachment as $image)
-                                                                <image style="width:100px;height:100px;" src="{{$image->relative_path}}"></image>
-                                                            @endforeach
-                                                        @endif
-                                                    </div>
-                                                </div>
-												<div class="col-xs-6 col-md-2">
-													<div style="margin-top:15px;">
-														<h4 class="box-title">创建时间:</br></br></br>{{$repair->created_at}}</h4>
-													</div>
-												</div>
-                                                <div class="col-xs-6 col-md-2">
-                                                    <div style="margin-top:10px;">
-                                                        {!! $repairPresenter->repairStatus($repair) !!}
-                                                    </div>
-                                                    <div style="margin-top:10px;">
-                                                        @if($repair->status == 'FINISH')
-                                                           <span class="badge">已完成</span>
-                                                        @else
-                                                            <a href="{{route('admin.repairs.status.update',$repair->id)}}?status={{$repairPresenter->repairOperate($repair)['status']}}"  class="badge bg-aqua">{{$repairPresenter->repairOperate($repair)['name']}}
-                                                            </a>
-                                                        @endif
-                                                     </div>
-                                                     <div style="margin-top:10px;">
-                                                        <a href="{{route('admin.repairs.edit',$repair->id)}}" class="badge bg-yellow" id='link'>编辑</a>
-                                                     </div>
-                                                     <div style="margin-top:10px;">
-                                                        <a href="{{route('admin.repairs.show',$repair->id)}}" class="badge bg-aqua" id='link'>详情</a>
-                                                     </div>
-                                                     <div style="margin-top:10px;">
-                                                        <a href="{{route('admin.repairs.destory',$repair->id)}}" data-method='delete' data-confirm="你确定要删除吗？"  class="badge bg-red" id='link'>删除</a>
-                                                     </div>
-                                                </div>
-                                            </div>
+
+
+											<div class="btn-group">
+	                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="true">操作
+	                                                <span class="fa fa-caret-down"></span></button>
+	                                            <ul class="dropdown-menu slim-menu">
+													<li>
+														@if($repair->status == 'FINISH')
+														   <span class="badge">已完成</span>
+														@else
+															<a href="{{route('admin.repairs.status.update',$repair->id)}}?status={{$repairPresenter->repairOperate($repair)['status']}}"  class="badge bg-aqua">{{$repairPresenter->repairOperate($repair)['name']}}
+															</a>
+														@endif
+													</li>
+													<li>
+														<a href="{{route('admin.repairs.edit',$repair->id)}}" class="badge bg-yellow" id='link'>编辑</a>
+													</li>
+													<li>
+														<a href="{{route('admin.repairs.show',$repair->id)}}" class="badge bg-aqua" id='link'>详情</a>
+													</li>
+													<li>
+														<a href="{{route('admin.repairs.destory',$repair->id)}}" data-method='delete' data-confirm="你确定要删除吗？"  class="badge bg-red" id='link'>删除</a>
+													</li>
+	                                            </ul>
+	                                        </div>
                                         </td>
                                     </tr>
                                 @endforeach

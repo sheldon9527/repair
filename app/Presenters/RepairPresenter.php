@@ -20,11 +20,11 @@ class RepairPresenter
     public function repairStatus($repair)
     {
         if ($repair->status == 'FINISH') {
-            $content = '<span class="badge bg-green">状态:维修完</span>';
+            $content = '<span class="badge bg-green">维修完</span>';
         } elseif ($repair->status == 'PENDING') {
-            $content = '<span class="badge bg-red">状态:维修中</span>';
+            $content = '<span class="badge bg-red">维修中</span>';
         } elseif ($repair->status == 'PEND') {
-            $content = '<span class="badge bg-yellow">状态:未维修</span>';
+            $content = '<span class="badge bg-yellow">未维修</span>';
         } else {
             $content = '';
         }
